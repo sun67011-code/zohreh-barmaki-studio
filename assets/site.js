@@ -110,12 +110,15 @@ const briefState={
 const fields={
   name:$('#briefName'),
   company:$('#briefCompany'),
+  email:$('#briefEmail'),
+  website:$('#briefWebsite'),
   summary:$('#briefSummary'),
   constraints:$('#briefConstraints')
 };
 function briefText(){
   const name=fields.name?.value.trim()||'Not specified';
   const company=fields.company?.value.trim()||'Not specified';
+  const email=fields.email?.value.trim()||'Not specified';
   const summary=fields.summary?.value.trim()||'Project context to be clarified during discovery.';
   const constraints=fields.constraints?.value.trim()||'No constraints supplied yet.';
   return [
@@ -123,6 +126,7 @@ function briefText(){
     '',
     `Contact: ${name}`,
     `Company / initiative: ${company}`,
+    `Email: ${email}`,
     `Project type: ${briefState.type}`,
     `Current stage: ${briefState.stage}`,
     `Primary priority: ${briefState.priority}`,
@@ -185,4 +189,45 @@ const currentPath=location.pathname.replace(/\/+$/,'');
 $$('a[data-nav]').forEach(a=>{
   const href=a.getAttribute('href')?.replace(/\/+$/,'');
   if(href===currentPath) a.setAttribute('aria-current','page');
+});
+
+
+const enquiryEndpoint='https://yafkgsczvmsltyoilagt.supabase.co/functions/v1/submit-enquiry';
+$('#submitBrief')?.addEventListener('click',async()=>{
+  const btn=$('#submitBrief');
+  const status=$('#submitStatus');
+  const name=fields.name?.value.trim()||'';
+  const email=fields.email?.value.trim()||'';
+  const summary=fields.summary?.value.trim()||'';
+  if(name.length<2){status.textContent='Please enter your name.';fields.name?.focus();return}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){status.textContent='Please enter a valid email address.';fields.email?.focus();return}
+  if(summary.length<20){status.textContent='Please add at least 20 characters of project context.';fields.summary?.focus();return}
+  btn.disabled=true;btn.textContent='Sending…';status.textContent='Submitting securely…';
+  try{
+    const response=await fetch(enquiryEndpoint,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        name,
+        company:fields.company?.value.trim()||'',
+        contact_email:email,
+        project_type:briefState.type,
+        project_stage:briefState.stage,
+        priority:briefState.priority,
+        engagement_model:briefState.model,
+        summary,
+        constraints:fields.constraints?.value.trim()||'',
+        website:fields.website?.value||''
+      })
+    });
+    const data=await response.json().catch(()=>({}));
+    if(!response.ok) throw new Error(data.error||'Unable to submit the enquiry.');
+    status.textContent=`Received — reference ${data.reference}. Keep this reference for follow-up.`;
+    btn.textContent='Enquiry sent';
+  }catch(err){
+    status.textContent=err?.message||'Unable to submit right now. Please try again.';
+    btn.textContent='Send project enquiry';
+  }finally{
+    btn.disabled=false;
+  }
 });
