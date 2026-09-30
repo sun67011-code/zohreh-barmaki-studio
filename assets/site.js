@@ -81,8 +81,8 @@ const projectData={
 };
 
 const modal=$('#caseModal');
-$$('[data-case]').forEach(cardEl=>{
-  cardEl.addEventListener('click',e=>{
+$('[data-case]').forEach(cardEl=>{
+  const openCase=e=>{
     if(e.target.closest('a')) return;
     const d=projectData[cardEl.dataset.case];
     if(!d||!modal) return;
@@ -94,7 +94,9 @@ $$('[data-case]').forEach(cardEl=>{
     const link=$('#caseLink');
     if(d.url){link.hidden=false;link.href=d.url}else{link.hidden=true;link.removeAttribute('href')}
     modal.showModal();
-  });
+  };
+  cardEl.addEventListener('click',openCase);
+  cardEl.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openCase(e)}});
 });
 $('#caseClose')?.addEventListener('click',()=>modal?.close());
 modal?.addEventListener('click',e=>{if(e.target===modal)modal.close()});
@@ -173,7 +175,11 @@ $('#downloadBrief')?.addEventListener('click',()=>{
   a.href=url;a.download='project-introduction-brief.txt';a.click();
   setTimeout(()=>URL.revokeObjectURL(url),500);
 });
-$('#printProfile')?.addEventListener('click',()=>print());
+$('#printProfile')?.addEventListener('click',()=>{
+  if(location.pathname.endsWith('/profile.html')||location.pathname.endsWith('profile.html')) print();
+  else location.href='profile.html?print=1';
+});
+if((location.pathname.endsWith('/profile.html')||location.pathname.endsWith('profile.html'))&&new URLSearchParams(location.search).get('print')==='1') setTimeout(()=>print(),450);
 
 const currentPath=location.pathname.replace(/\/+$/,'');
 $$('a[data-nav]').forEach(a=>{
