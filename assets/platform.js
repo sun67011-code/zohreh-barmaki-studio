@@ -153,8 +153,8 @@ function renderProject(d){
   $("#projectProgress").innerHTML=`<div class="progress"><i style="width:${progress}%"></i></div><div class="meta">${done} of ${total} milestones complete · ${progress}%</div>`;
   $("#milestones").innerHTML=d.milestones.length?d.milestones.map(m=>`<div class="milestone" ${staff?`data-milestone="${m.id}"`:""}><div><b>${esc(m.title)}</b><small>${esc(m.description||"")} ${m.due_date?"· Due "+fmt(m.due_date):""}</small></div>${pill(m.status)}</div>`).join(""):`<div class="empty">No milestones yet.</div>`;
   $("#updates").innerHTML=d.updates.length?d.updates.map(u=>`<article class="update"><h4>${esc(u.title)}</h4><p>${esc(u.body)}</p><div class="meta">${esc(u.visibility)} · ${fmt(u.created_at)}</div></article>`).join(""):`<div class="empty">No project updates yet.</div>`;
-  $("#documents").innerHTML=d.documents.length?d.documents.map(x=>`<a class="update" href="${esc(x.url)}" target="_blank" rel="noreferrer" style="display:block"><b>${esc(x.title)}</b><div class="meta">${esc(x.kind)} · ${esc(x.visibility)} · ${fmt(x.created_at)} ↗</div></a>`).join(""):`<div class="empty">No shared documents yet.</div>`;
-  $("#proposals").innerHTML=d.proposals.length?d.proposals.map(x=>`<div class="update"><b>${esc(x.title)}</b><div>${pill(x.status)} <span class="meta">${money(x.fee_amount,x.fee_currency)} · valid ${fmt(x.valid_until)}</span></div>${x.scope?`<p>${esc(x.scope)}</p>`:""}</div>`).join(""):`<div class="empty">No proposals yet.</div>`;
+  $("#documents").innerHTML=d.documents.length?d.documents.map(x=>{const href=x.resolved_url||x.url||"#";const size=x.size_bytes?` · ${Math.round(Number(x.size_bytes)/1024)} KB`:"";return `<a class="update" href="${esc(href)}" target="_blank" rel="noreferrer" style="display:block"><b>${esc(x.title)}</b><div class="meta">${esc(x.kind)} · ${esc(x.visibility)}${size} · ${fmt(x.created_at)} ↗</div></a>`}).join(""):`<div class="empty">No shared documents yet.</div>`;
+  $("#proposals").innerHTML=d.proposals.length?d.proposals.map(x=>`<div class="update"><b>${esc(x.title)}</b><div>${pill(x.status)} <span class="meta">${money(x.fee_amount,x.fee_currency)} · valid ${fmt(x.valid_until)}</span></div>${x.scope?`<p>${esc(x.scope)}</p>`:""}${!staff&&x.status==="sent"?`<button class="btn small" data-accept-proposal="${x.id}">Accept proposal</button>`:""}</div>`).join(""):`<div class="empty">No proposals yet.</div>`;
   $("#members").innerHTML=staff?(d.members.length?d.members.map(x=>`<div class="update"><b>${esc(x.display_name||x.email)}</b><div class="meta">${esc(x.email)} · ${esc(x.role)}</div></div>`).join(""):`<div class="empty">No members.</div>`):"";
   $("#messages").innerHTML=d.messages.length?d.messages.map(m=>{const who=staff?m.sender_email:(m.sender_role==="staff"?"Studio":"Client");return `<div class="msg ${m.sender_role==="staff"?"staff":""}">${esc(m.body)}<small>${esc(who)} · ${fmt(m.created_at)}</small></div>`}).join(""):`<div class="empty">No messages yet.</div>`;
   bindDynamic();
@@ -178,7 +178,8 @@ function bindDynamic(){
   $$("[data-lead]").forEach(x=>x.onclick=e=>{if(e.target.closest("button"))return;editLead(x.dataset.lead)});
   $$("[data-lead-edit]").forEach(x=>x.onclick=e=>{e.stopPropagation();editLead(x.dataset.leadEdit)});
   $$("[data-convert]").forEach(x=>x.onclick=e=>{e.stopPropagation();convertLead(x.dataset.convert)});
-  $$("[data-milestone]").forEach(x=>x.onclick=()=>editMilestone(x.dataset.milestone));
+  $("[data-milestone]").forEach(x=>x.onclick=()=>editMilestone(x.dataset.milestone));
+  $("[data-accept-proposal]").forEach(x=>x.onclick=()=>acceptProposal(x.dataset.acceptProposal));
 }
 function editLead(id){
   const x=leadById(id);if(!x)return;
@@ -207,12 +208,40 @@ function editMilestone(id){
   const p=state.currentProject, m=p?.milestones.find(x=>x.id===id);if(!m||!["owner","admin"].includes(p.role))return;
   openModal("Update milestone",`<form class="form"><div class="field"><label>Title</label><input name="title" value="${esc(m.title)}"></div><div class="field"><label>Description</label><textarea name="description">${esc(m.description||"")}</textarea></div><div class="form two"><div class="field"><label>Status</label><select name="status">${["planned","in_progress","review","done","blocked"].map(v=>`<option ${m.status===v?"selected":""}>${v}</option>`).join("")}</select></div><div class="field"><label>Due date</label><input type="date" name="due_date" value="${m.due_date||""}"></div></div><button class="btn" type="submit">Save milestone</button><div id="modalError" class="notice"></div></form>`,async f=>{await api("update_milestone",{id,title:f.get("title"),description:f.get("description"),status:f.get("status"),due_date:f.get("due_date")});await openProject(p.project.id)});
 }
+async function acceptProposal(id){
+  if(!state.currentProject)return;
+  if(!confirm("Accept this proposal? This action will be recorded in the project history."))return;
+  try{
+    await api("accept_proposal",{id});
+    showNotice("Proposal accepted.");
+    await openProject(state.currentProject.project.id);
+  }catch(e){showNotice(e.message)}
+}
+
 function projectForm(title,fieldsHtml,handler){
   const p=state.currentProject?.project;if(!p)return;
   openModal(title,`<form class="form">${fieldsHtml}<button class="btn" type="submit">Save</button><div id="modalError" class="notice"></div></form>`,async f=>{await handler(f,p);await openProject(p.id)});
 }
 $("#postUpdate")?.addEventListener("click",()=>projectForm("Post project update",`<div class="field"><label>Title</label><input name="title" required></div><div class="field"><label>Update</label><textarea name="body" rows="6" required></textarea></div><div class="field"><label>Visibility</label><select name="visibility"><option value="client">Client visible</option><option value="internal">Internal only</option></select></div>`,(f,p)=>api("post_update",{project_id:p.id,title:f.get("title"),body:f.get("body"),visibility:f.get("visibility")})));
-$("#addDocument")?.addEventListener("click",()=>projectForm("Add document or project link",`<div class="field"><label>Title</label><input name="title" required></div><div class="field"><label>HTTPS URL</label><input name="url" type="url" placeholder="https://" required></div><div class="form two"><div class="field"><label>Kind</label><select name="kind"><option>document</option><option>proposal</option><option>contract</option><option>design</option><option>report</option><option>link</option><option>other</option></select></div><div class="field"><label>Visibility</label><select name="visibility"><option value="client">Client visible</option><option value="internal">Internal only</option></select></div></div>`,(f,p)=>api("add_document",{project_id:p.id,title:f.get("title"),url:f.get("url"),kind:f.get("kind"),visibility:f.get("visibility")})));
+$("#addDocument")?.addEventListener("click",()=>projectForm("Add document or project link",`<div class="field"><label>Title</label><input name="title" required></div><div class="field"><label>Upload private file</label><input name="file" type="file" accept=".pdf,.png,.jpg,.jpeg,.webp,.txt,.csv,.zip,.docx,.xlsx,.pptx"><div class="meta">Private Supabase Storage · maximum 20 MB</div></div><div class="field"><label>Or HTTPS URL</label><input name="url" type="url" placeholder="https://"></div><div class="form two"><div class="field"><label>Kind</label><select name="kind"><option>document</option><option>proposal</option><option>contract</option><option>design</option><option>report</option><option>link</option><option>other</option></select></div><div class="field"><label>Visibility</label><select name="visibility"><option value="client">Client visible</option><option value="internal">Internal only</option></select></div></div>`,async(f,p)=>{
+  const file=f.get("file");
+  const url=String(f.get("url")||"").trim();
+  if((!file||!file.size)&&!url) throw new Error("Choose a file or provide an HTTPS URL");
+  let storagePath="";
+  if(file&&file.size){
+    if(file.size>20*1024*1024) throw new Error("File exceeds the 20 MB limit");
+    const safe=String(file.name||"file").replace(/[^a-zA-Z0-9._-]+/g,"-").slice(-120);
+    storagePath=`${p.id}/${Date.now()}-${crypto.randomUUID()}-${safe}`;
+    const {error}=await supabase.storage.from("project-files").upload(storagePath,file,{upsert:false,cacheControl:"3600"});
+    if(error) throw error;
+  }
+  try{
+    await api("add_document",{project_id:p.id,title:f.get("title"),url,storage_path:storagePath,size_bytes:file?.size||null,mime_type:file?.type||null,kind:f.get("kind"),visibility:f.get("visibility")});
+  }catch(err){
+    if(storagePath) await supabase.storage.from("project-files").remove([storagePath]).catch(()=>{});
+    throw err;
+  }
+}));
 $("#addMember")?.addEventListener("click",()=>projectForm("Add client member",`<div class="field"><label>Email</label><input name="email" type="email" required></div><div class="field"><label>Display name</label><input name="display_name"></div><div class="field"><label>Role</label><select name="role"><option>client</option><option>stakeholder</option></select></div>`,(f,p)=>api("add_member",{project_id:p.id,email:f.get("email"),display_name:f.get("display_name"),role:f.get("role")})));
 $("#createProposal")?.addEventListener("click",()=>projectForm("Create proposal",`<div class="field"><label>Title</label><input name="title" required></div><div class="field"><label>Scope</label><textarea name="scope" rows="6"></textarea></div><div class="form two"><div class="field"><label>Currency</label><input name="fee_currency" value="USD"></div><div class="field"><label>Fee</label><input name="fee_amount" type="number" min="0" step="0.01"></div><div class="field"><label>Status</label><select name="status"><option>draft</option><option>sent</option><option>accepted</option><option>declined</option></select></div><div class="field"><label>Valid until</label><input type="date" name="valid_until"></div></div>`,(f,p)=>api("create_proposal",{project_id:p.id,title:f.get("title"),scope:f.get("scope"),fee_currency:f.get("fee_currency"),fee_amount:f.get("fee_amount"),status:f.get("status"),valid_until:f.get("valid_until")})));
 
