@@ -416,3 +416,37 @@ body.lock{overflow:hidden}a{color:inherit;text-decoration:none}button,input,text
   .cap h3,.lane h3,.step h3{font-size:31px}
   .project{min-height:78svh}
 }
+
+/* Final desktop viewport lock: hero is exactly one screen at 100% zoom. */
+@media (min-width:821px){
+  .hero{
+    height:100vh;
+    height:100svh;
+    min-height:0;
+    max-height:100svh;
+    overflow:hidden;
+    padding:88px 5vw 22px;
+  }
+  .hero h1{
+    font-size:clamp(64px,min(8.2vw,15vh),140px);
+    margin:10px 0 18px;
+  }
+  .hero h1 .sans{margin-top:10px}
+  .hero .lede{
+    font-size:15px;
+    line-height:1.48;
+    max-width:570px;
+  }
+  .hero .actions{margin-top:17px}
+  .hero-stage{
+    height:clamp(360px,58svh,540px);
+    max-height:calc(100svh - 126px);
+    max-width:432px;
+  }
+  .hero-badge{
+    width:94px;
+    height:94px;
+    right:-14px;
+    font-size:7.5px;
+  }
+}
