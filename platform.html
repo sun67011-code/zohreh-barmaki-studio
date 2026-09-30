@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#171717">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/platform.css">
+<title>Studio Platform — Zohreh Barmaki</title>
+</head>
+<body>
+
+<section class="login-screen" id="loginScreen">
+  <div class="login-art">
+    <strong>ZB</strong>
+    <small>Consulting Business Platform · Secure Workspace</small>
+  </div>
+  <div class="login-panel">
+    <div class="login-box">
+      <div style="font-size:10px;letter-spacing:.16em;text-transform:uppercase">Private access</div>
+      <h1 id="authTitle">Access the studio.</h1>
+      <p>Secure workspace for studio operations, clients, proposals, milestones, project updates and collaboration.</p>
+      <form class="login-form" id="authForm">
+        <input id="authEmail" type="email" autocomplete="email" placeholder="Email" required>
+        <input id="authPassword" type="password" autocomplete="current-password" placeholder="Password" minlength="8" required>
+        <button class="btn" id="authSubmit" type="submit">Sign in</button>
+      </form>
+      <div id="authNotice" class="notice"></div>
+      <div class="login-switch"><button id="authSwitch" type="button">Need an account? Create one</button></div>
+      <div class="login-switch"><a href="./">← Return to public studio website</a></div>
+    </div>
+  </div>
+</section>
+
+<div class="app hidden" id="platformApp">
+  <aside class="side">
+    <a class="logo" href="./"><span>ZB</span><span>Studio Platform</span></a>
+    <nav>
+      <button class="active" data-view="dashboard" data-staff-only>Overview</button>
+      <button data-view="leads" data-staff-only>Leads</button>
+      <button data-view="projects">Projects</button>
+      <button data-view="clients" data-staff-only>Clients</button>
+    </nav>
+    <div class="side-bottom">
+      <div id="roleLabel">Workspace</div>
+      <div id="signedInEmail"></div>
+      <button id="signOut">Sign out</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="notice hidden" id="globalNotice"></div>
+    <div class="notice hidden" id="appLoader">Working…</div>
+
+    <section class="view active" id="view-dashboard">
+      <div class="topbar">
+        <div><h1>Studio overview</h1><p>Leads, active delivery and recent operational activity.</p></div>
+        <div class="top-actions"><button class="btn" data-view="leads">Review leads</button><button class="btn secondary" data-view="projects">Open projects</button></div>
+      </div>
+      <div class="metrics">
+        <div class="metric"><strong id="mLeads">0</strong><span>Open leads</span></div>
+        <div class="metric"><strong id="mProjects">0</strong><span>Active projects</span></div>
+        <div class="metric"><strong id="mClients">0</strong><span>Active clients</span></div>
+        <div class="metric"><strong id="mProposals">0</strong><span>Open proposals</span></div>
+      </div>
+      <div class="grid2">
+        <div class="panel">
+          <div class="panel-head"><h2>Recent leads</h2><button class="btn small secondary" data-view="leads">All leads</button></div>
+          <div class="table-wrap"><table class="table"><thead><tr><th>Reference</th><th>Lead</th><th>Type</th><th>Status</th></tr></thead><tbody id="dashLeads"></tbody></table></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2>Projects</h2><button class="btn small secondary" data-view="projects">All projects</button></div>
+          <div class="panel-body" id="dashProjects"></div>
+        </div>
+      </div>
+      <div class="panel" style="margin-top:18px">
+        <div class="panel-head"><h2>Recent activity</h2></div>
+        <div class="panel-body" id="dashActivity"></div>
+      </div>
+    </section>
+
+    <section class="view" id="view-leads">
+      <div class="topbar">
+        <div><h1>Lead pipeline</h1><p>Qualify enquiries, record next actions and convert approved opportunities into client projects.</p></div>
+      </div>
+      <div class="filters">
+        <button class="filter active" data-lead-filter="all">All</button>
+        <button class="filter" data-lead-filter="new">New</button>
+        <button class="filter" data-lead-filter="reviewing">Reviewing</button>
+        <button class="filter" data-lead-filter="qualified">Qualified</button>
+        <button class="filter" data-lead-filter="proposal">Proposal</button>
+        <button class="filter" data-lead-filter="won">Won</button>
+        <button class="filter" data-lead-filter="closed">Closed</button>
+      </div>
+      <div class="panel">
+        <div id="leadData" data-items="[]"></div>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>Reference</th><th>Contact</th><th>Company</th><th>Project</th><th>Status</th><th>Action</th></tr></thead>
+            <tbody id="leadTable"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="view" id="view-projects">
+      <div class="topbar">
+        <div><h1>Projects</h1><p>Your consulting delivery workspace — status, milestones, updates, proposals, documents and client communication.</p></div>
+        <div class="top-actions"><button class="btn hidden" id="newProjectBtn">New project</button></div>
+      </div>
+      <div class="cards" id="projectsGrid"></div>
+    </section>
+
+    <section class="view" id="view-clients">
+      <div class="topbar">
+        <div><h1>Clients</h1><p>Client records created from qualified leads and active delivery work.</p></div>
+      </div>
+      <div class="panel"><div class="table-wrap"><table class="table"><thead><tr><th>Client</th><th>Email</th><th>Status</th><th>Updated</th></tr></thead><tbody id="clientTable"></tbody></table></div></div>
+    </section>
+
+    <section class="view" id="view-project">
+      <div class="topbar">
+        <div>
+          <button class="btn secondary small" id="backProjects">← Projects</button>
+          <div class="card-code" id="projectCode" style="margin-top:18px"></div>
+          <h1 id="projectTitle">Project</h1>
+          <p id="projectSummary"></p>
+        </div>
+        <div class="top-actions hidden" id="staffProjectActions">
+          <button class="btn secondary" id="editProject">Edit</button>
+          <button class="btn secondary" id="addMember">Add member</button>
+          <button class="btn" id="addMilestone">Milestone</button>
+        </div>
+      </div>
+
+      <div class="client-hero">
+        <div>
+          <div class="card-code">Current state</div>
+          <div style="margin:10px 0" id="projectState"></div>
+          <div id="projectProgress"></div>
+        </div>
+        <div>
+          <div><b>Client:</b> <span id="projectClient"></span></div>
+          <div><b>Timeline:</b> <span id="projectDates"></span></div>
+        </div>
+      </div>
+
+      <div class="detail">
+        <div class="detail-main">
+          <section class="box">
+            <div style="display:flex;justify-content:space-between;gap:14px;align-items:center">
+              <h2>Milestones</h2>
+              <button class="btn small hidden" id="addMilestoneMirror" data-staff-only>Add</button>
+            </div>
+            <div id="milestones"></div>
+          </section>
+
+          <section class="box">
+            <div style="display:flex;justify-content:space-between;gap:14px;align-items:center">
+              <h2>Project updates</h2>
+              <button class="btn small" id="postUpdate" data-staff-only>Post update</button>
+            </div>
+            <div id="updates"></div>
+          </section>
+
+          <section class="box">
+            <h2>Messages</h2>
+            <div class="messages" id="messages"></div>
+            <div class="composer"><textarea id="messageText" placeholder="Write a project message…"></textarea><button class="btn" id="sendMessage">Send</button></div>
+          </section>
+        </div>
+
+        <aside class="detail-side">
+          <section class="box">
+            <div style="display:flex;justify-content:space-between;gap:12px;align-items:center">
+              <h3>Documents</h3><button class="btn small secondary" id="addDocument" data-staff-only>Add</button>
+            </div>
+            <div id="documents"></div>
+          </section>
+
+          <section class="box">
+            <div style="display:flex;justify-content:space-between;gap:12px;align-items:center">
+              <h3>Proposals</h3><button class="btn small secondary" id="createProposal" data-staff-only>Create</button>
+            </div>
+            <div id="proposals"></div>
+          </section>
+
+          <section class="box" data-staff-only>
+            <h3>Members</h3>
+            <div id="members"></div>
+          </section>
+        </aside>
+      </div>
+    </section>
+  </main>
+</div>
+
+<dialog class="modal" id="actionModal">
+  <div class="modal-inner">
+    <div class="modal-head"><h2 id="modalTitle">Action</h2><button class="close" id="modalClose">×</button></div>
+    <div id="modalBody"></div>
+  </div>
+</dialog>
+
+<script type="module" src="assets/platform.js"></script>
+</body>
+</html>
