@@ -231,3 +231,33 @@ $('#submitBrief')?.addEventListener('click',async()=>{
     btn.disabled=false;
   }
 });
+
+
+// Mobile reel-style focus transitions: scenes sharpen as they cross the center of the viewport.
+if (matchMedia('(max-width: 820px)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const reelScenes = $$('.cap,.lane,.project,.engagement,.step');
+  reelScenes.forEach(el=>el.classList.add('reel-scene'));
+
+  const reelObserver = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      entry.target.classList.toggle('is-focus', entry.isIntersecting && entry.intersectionRatio >= .42);
+    });
+  },{
+    threshold:[0,.18,.42,.65,.85],
+    rootMargin:'-10% 0px -10% 0px'
+  });
+
+  reelScenes.forEach(el=>reelObserver.observe(el));
+
+  const heroPortrait = $('.portrait-card img');
+  let ticking=false;
+  const updateMobileHero=()=>{
+    ticking=false;
+    if(!heroPortrait)return;
+    const y=Math.min(scrollY, innerHeight);
+    heroPortrait.style.transform='translate3d(0,'+(y*.045)+'px,0) scale(1.025)';
+  };
+  addEventListener('scroll',()=>{
+    if(!ticking){requestAnimationFrame(updateMobileHero);ticking=true}
+  },{passive:true});
+}
