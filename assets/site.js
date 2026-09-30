@@ -81,7 +81,7 @@ const projectData={
 };
 
 const modal=$('#caseModal');
-$('[data-case]').forEach(cardEl=>{
+$$('[data-case]').forEach(cardEl=>{
   const openCase=e=>{
     if(e.target.closest('a')) return;
     const d=projectData[cardEl.dataset.case];
