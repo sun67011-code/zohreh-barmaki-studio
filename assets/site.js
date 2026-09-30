@@ -35,7 +35,7 @@ $$('.reveal').forEach(el=>io.observe(el));
 
 const card=$('.hero-card');
 const stage=$('.hero-stage');
-if(card&&stage&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+if(card&&stage&&!matchMedia('(prefers-reduced-motion: reduce)').matches&&matchMedia('(hover:hover) and (pointer:fine)').matches){
   stage.addEventListener('pointermove',e=>{
     const r=stage.getBoundingClientRect();
     const x=(e.clientX-r.left)/r.width-.5;
@@ -260,4 +260,18 @@ if (matchMedia('(max-width: 820px)').matches && !matchMedia('(prefers-reduced-mo
   addEventListener('scroll',()=>{
     if(!ticking){requestAnimationFrame(updateMobileHero);ticking=true}
   },{passive:true});
+}
+
+const mobilePortrait=$('.portrait-card img');
+if(mobilePortrait && matchMedia('(max-width:820px)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+  let ticking=false;
+  const paintMobilePortrait=()=>{
+    const y=Math.min(scrollY, innerHeight);
+    mobilePortrait.style.transform=`translate3d(0,${Math.round(y*0.035)}px,0) scale(1.045)`;
+    ticking=false;
+  };
+  addEventListener('scroll',()=>{
+    if(!ticking){requestAnimationFrame(paintMobilePortrait);ticking=true}
+  },{passive:true});
+  paintMobilePortrait();
 }
