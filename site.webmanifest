@@ -1,0 +1,9 @@
+{
+  "name": "Zohreh Barmaki — Digital Systems & Product Studio",
+  "short_name": "ZB Studio",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f3f0eb",
+  "theme_color": "#f3f0eb",
+  "description": "Independent digital product and technology consultancy."
+}
