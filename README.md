@@ -46,6 +46,7 @@ The interactive project brief is generated locally in the browser and is not tra
 ├─ index.html
 ├─ profile.html
 ├─ privacy.html
+├─ platform.html
 ├─ 404.html
 ├─ site.webmanifest
 ├─ robots.txt
@@ -54,20 +55,30 @@ The interactive project brief is generated locally in the browser and is not tra
 └─ assets/
    ├─ site.css
    ├─ site.js
+   ├─ platform.css
+   ├─ platform.js
    └─ icon.svg
 ```
 
-## Planned secure backend
+## Supabase consulting platform
 
-The next infrastructure layer is designed for Supabase:
+The Supabase backend is now live and includes:
 
-- `project_enquiries` — structured consultation requests
-- Supabase Auth — optional client access
-- Storage — proposal / project documents
-- Edge Functions — notifications and controlled server-side integrations
-- Row Level Security — client and admin data boundaries
+- `project_enquiries` lead intake
+- secure Edge Function validation and rate limiting
+- authenticated `platform.html` workspace
+- staff dashboard and lead qualification
+- lead → client/project conversion
+- clients, projects and memberships
+- milestones and project health
+- project updates with client/internal visibility
+- proposal records
+- project document/link register
+- project messaging
+- activity logging
+- explicit RLS denial policies for direct browser table access
 
-Service-role credentials must never be shipped to browser code.
+The browser never receives a service-role credential. See `docs/business-platform.md` for the architecture.
 
 ## Deployment
 
