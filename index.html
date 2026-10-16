@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -17,6 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>(function(){try{document.documentElement.dataset.theme=localStorage.getItem("zb-theme")||"light"}catch(e){}})();</script>
 <link rel="stylesheet" href="assets/portfolio-v2.css">
 <title>Zohreh Barmaki — Digital Systems & Technology Consultant</title>
 <script type="application/ld+json">
@@ -54,12 +55,14 @@
 
   <nav class="desktop-nav" aria-label="Primary navigation">
     <a href="#solutions">Solutions</a>
+    <a href="#capabilities">Expertise</a>
     <a href="#work">Selected work</a>
     <a href="#about">Profile</a>
     <a href="#contact">Contact</a>
   </nav>
 
   <div class="header-actions">
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" aria-pressed="false"><span class="theme-icon" aria-hidden="true">☾</span><span class="theme-label">Dark</span></button>
     <a class="social-icon" href="https://www.linkedin.com/in/zohreh-barmaki/" target="_blank" rel="noreferrer" aria-label="LinkedIn">in</a>
     <a class="social-icon" href="https://www.instagram.com/zohreh.studio/" target="_blank" rel="noreferrer" aria-label="Instagram">ig</a>
     <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open navigation">
@@ -71,6 +74,8 @@
 <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
   <nav aria-label="Mobile navigation">
     <a href="#solutions">Solutions</a>
+    <a href="#capabilities">Expertise</a>
+    <a href="#creative">Creative practice</a>
     <a href="#work">Selected work</a>
     <a href="#about">Profile</a>
     <a href="#contact">Contact</a>
@@ -168,7 +173,7 @@
     </div>
   </section>
 
-  <section class="capabilities section">
+  <section class="capabilities section" id="capabilities">
     <div class="shell">
       <div class="section-heading compact">
         <div>
@@ -179,30 +184,42 @@
       </div>
 
       <div class="capability-list">
-        <article class="capability reveal">
+        <a class="capability reveal" href="services/discovery-and-strategy.html" aria-label="Explore Digital Product Strategy">
           <span>01</span><h3>Digital Product Strategy</h3>
-          <p>Discovery, requirements, user journeys, information architecture, workflow mapping and technical roadmaps before implementation decisions become expensive.</p>
-        </article>
-        <article class="capability reveal">
+          <p>Discovery, requirements, user journeys, information architecture, workflow mapping and technical roadmaps before implementation decisions become expensive.</p><span class="capability-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="capability reveal" href="services/web-app-development.html" aria-label="Explore Web & Application Development">
           <span>02</span><h3>Web & Application Development</h3>
-          <p>High-performance websites, portals, dashboards and web applications with responsive behavior, maintainable architecture and real operational logic.</p>
-        </article>
-        <article class="capability reveal">
+          <p>High-performance websites, portals, dashboards and web applications with responsive behavior, maintainable architecture and real operational logic.</p><span class="capability-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="capability reveal" href="services/ai-automation.html" aria-label="Explore AI & Workflow Automation">
           <span>03</span><h3>AI & Workflow Automation</h3>
-          <p>Practical automation around approvals, repetitive work, document flow, search, communication and intelligent assistance — with human review where it matters.</p>
-        </article>
-        <article class="capability reveal">
+          <p>Practical automation around approvals, repetitive work, document flow, search, communication and intelligent assistance — with human review where it matters.</p><span class="capability-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="capability reveal" href="services/healthtech-systems.html" aria-label="Explore HealthTech & Clinical UX">
           <span>04</span><h3>HealthTech & Clinical UX</h3>
-          <p>Systems informed by clinical terminology, specialist workflows, patient journeys, structured reporting and multi-role healthcare operations.</p>
-        </article>
-        <article class="capability reveal">
+          <p>Systems informed by clinical terminology, specialist workflows, patient journeys, structured reporting and multi-role healthcare operations.</p><span class="capability-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="capability reveal" href="services/seo-performance.html" aria-label="Explore Technical SEO & Performance">
           <span>05</span><h3>Technical SEO & Performance</h3>
-          <p>Search architecture, structured data, multilingual foundations, speed and discoverability treated as engineering concerns from the start.</p>
-        </article>
-        <article class="capability reveal">
+          <p>Search architecture, structured data, multilingual foundations, speed and discoverability treated as engineering concerns from the start.</p><span class="capability-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="capability reveal" href="services/creative-web-experiences.html" aria-label="Explore Creative Technology">
           <span>06</span><h3>Creative Technology</h3>
-          <p>Editorial, cinematic and interactive experiences for artists, experts and cultural projects where the digital presence must feel distinctive rather than templated.</p>
-        </article>
+          <p>Editorial, cinematic and interactive experiences for artists, experts and cultural projects where the digital presence must feel distinctive rather than templated.</p><span class="capability-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="capability reveal" href="services/video-production.html" aria-label="Explore Video Editing & Motion Production">
+          <span>07</span><h3>Video Editing & Motion Production</h3>
+          <p>Video editing, cinematic teasers, short-form clips, titles, sound-led pacing and multi-format delivery for campaigns, artists and specialist brands.</p><span class="capability-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="capability reveal" href="services/storyboard-illustration.html" aria-label="Explore Storyboards & Book Illustration">
+          <span>08</span><h3>Storyboards & Book Illustration</h3>
+          <p>Narrative treatments, visual storyboards, character and scene development, editorial illustration and book or novel illustration.</p><span class="capability-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="capability reveal" href="services/painting-art-practice.html" aria-label="Explore Painting & Artistic Identity">
+          <span>09</span><h3>Painting & Artistic Identity</h3>
+          <p>A distinct artistic practice spanning oil painting, digital painting and visual storytelling, presented alongside my technology work.</p><span class="capability-arrow" aria-hidden="true">↗</span>
+        </a>
       </div>
     </div>
   </section>
@@ -214,65 +231,69 @@
           <p class="eyebrow">Selected work</p>
           <h2>Systems shaped around<br><em>real use.</em></h2>
         </div>
-        <p>Selected public work and product architecture. No invented performance claims — the focus is the problem, the system and the contribution.</p>
+        <p>Four distinct product types, with their purpose, interaction model and distinguishing capabilities — not simply a list of client names.</p>
       </div>
 
       <div class="project-grid">
         <article class="project-card reveal">
-          <a class="project-link" href="https://layeghmusic.com/" target="_blank" rel="noreferrer" aria-label="Visit Layegh Music">
-            <div class="project-visual art">
-              <span>Creative technology · Live</span>
-              <strong>01</strong>
-              <div class="project-monogram">LM</div>
-            </div>
-            <div class="project-copy">
-              <div><p>Digital exhibition / Artist platform</p><h3>Layegh Music</h3></div><i>↗</i>
-            </div>
-            <p class="project-description">A media-rich digital exhibition built around works, performance, editorial context and a distinct curatorial identity.</p>
+          <a class="project-link" href="https://layeghmusic.com/" target="_blank" rel="noopener noreferrer" aria-label="View a live example of Immersive Digital Exhibition">
+            <div class="project-visual art"><span>Live example / Cultural technology</span><strong>01</strong><div class="project-monogram">EX</div></div>
+            <div class="project-copy"><div><p>Live example / Cultural technology</p><h3>Immersive Digital Exhibition</h3></div><i>↗</i></div>
+            <p class="project-description">A curatorial platform for music, performance and contemporary art — designed to feel like an exhibition, not a generic portfolio.</p>
+            <ul class="project-features"><li>Room-based editorial navigation</li><li>Integrated film, audio & performance media</li><li>Curated works, story and press architecture</li></ul>
+            <span class="project-visit">View live implementation <span aria-hidden="true">↗</span></span>
           </a>
         </article>
-
         <article class="project-card reveal">
-          <a class="project-link" href="https://tehranep.center/" target="_blank" rel="noreferrer" aria-label="Visit Tehran Arrhythmia Center">
-            <div class="project-visual clinical">
-              <span>HealthTech web · Live</span>
-              <strong>02</strong>
-              <div class="project-monogram">EP</div>
-            </div>
-            <div class="project-copy">
-              <div><p>Specialist healthcare / Multilingual</p><h3>Tehran Arrhythmia Center</h3></div><i>↗</i>
-            </div>
-            <p class="project-description">A specialist cardiac platform translating complex electrophysiology services into structured patient-facing digital journeys.</p>
+          <a class="project-link" href="https://tehranep.center/" target="_blank" rel="noopener noreferrer" aria-label="View a live example of Multilingual Specialist Medical Platform">
+            <div class="project-visual clinical"><span>Live example / Specialist healthcare</span><strong>02</strong><div class="project-monogram">MD</div></div>
+            <div class="project-copy"><div><p>Live example / Specialist healthcare</p><h3>Multilingual Specialist Medical Platform</h3></div><i>↗</i></div>
+            <p class="project-description">A patient-facing digital ecosystem that makes complex cardiac services understandable, discoverable and professionally presented.</p>
+            <ul class="project-features"><li>Multilingual specialist information architecture</li><li>Procedure-led patient journeys & service pages</li><li>Technical SEO & clinical content organization</li></ul>
+            <span class="project-visit">View live implementation <span aria-hidden="true">↗</span></span>
           </a>
         </article>
-
         <article class="project-card reveal">
           <div class="project-link static">
-            <div class="project-visual system">
-              <span>Clinical product architecture</span>
-              <strong>03</strong>
-              <div class="project-monogram">CI</div>
-            </div>
-            <div class="project-copy">
-              <div><p>Clinical workflow / Structured reporting</p><h3>Clinical Intelligence Systems</h3></div><i>—</i>
-            </div>
-            <p class="project-description">Product architecture for structured cardiovascular and neurointerventional reporting, longitudinal retrieval and clinician-oriented outputs.</p>
+            <div class="project-visual system"><span>Product architecture / Clinical intelligence</span><strong>03</strong><div class="project-monogram">CI</div></div>
+            <div class="project-copy"><div><p>Product architecture / Clinical intelligence</p><h3>Structured Clinical Reporting Workspace</h3></div><i>—</i></div>
+            <p class="project-description">A workflow-oriented concept for cardiovascular and neurointerventional reports, designed to reduce fragmented documentation.</p>
+            <ul class="project-features"><li>Structured procedural report modules</li><li>Longitudinal records & identity-based retrieval</li><li>Clinician-reviewed outputs and document workflows</li></ul>
+            <span class="project-visit muted">Development / Architecture</span>
           </div>
         </article>
-
         <article class="project-card reveal">
           <div class="project-link static">
-            <div class="project-visual portal">
-              <span>Healthcare product / In development</span>
-              <strong>04</strong>
-              <div class="project-monogram">PP</div>
-            </div>
-            <div class="project-copy">
-              <div><p>Physician practice / Patient portal</p><h3>Connected Patient Experience</h3></div><i>—</i>
-            </div>
-            <p class="project-description">A role-based patient and physician environment for records, medication workflows, documents, follow-up and specialist care coordination.</p>
+            <div class="project-visual portal"><span>In development / Connected healthcare</span><strong>04</strong><div class="project-monogram">PX</div></div>
+            <div class="project-copy"><div><p>In development / Connected healthcare</p><h3>Connected Patient & Physician Portal</h3></div><i>—</i></div>
+            <p class="project-description">A role-aware care coordination environment designed around patient access and the specialist physician's day-to-day workflows.</p>
+            <ul class="project-features"><li>Separate patient and physician experiences</li><li>Documents, medication & follow-up workflows</li><li>Specialist care planning & record organization</li></ul>
+            <span class="project-visit muted">Development / Architecture</span>
           </div>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="creative-practice section" id="creative">
+    <div class="shell">
+      <div class="section-heading">
+        <div><p class="eyebrow">Creative practice / Motion · Narrative · Art</p><h2>Technology meets<br><em>visual authorship.</em></h2></div>
+        <p>Beyond software: a visual practice informed by motion, storytelling, illustration and painting. Each discipline has its own creative process and deliverables.</p>
+      </div>
+      <div class="creative-grid">
+        <a class="creative-card reveal" href="services/video-production.html">
+          <div class="creative-art motion-art" aria-hidden="true"><span class="motion-play">▶</span><span class="art-label">MOTION / 01</span></div>
+          <div class="creative-body"><span>Editing / Teasers / Short-form</span><h3>Video & Motion Production</h3><p>Cinematic teasers, brand films, performance edits, social clips and presentation-ready video.</p><strong>Explore production ↗</strong></div>
+        </a>
+        <a class="creative-card reveal" href="services/storyboard-illustration.html">
+          <div class="creative-art story-art" aria-hidden="true"><span class="story-sheet"><i></i><i></i><i></i></span><span class="art-label">STORY / 02</span></div>
+          <div class="creative-body"><span>Storyboards / Books / Novels</span><h3>Visual Storytelling & Illustration</h3><p>From narrative beats and sequential framing to character studies, scenes and illustrated pages.</p><strong>Explore illustration ↗</strong></div>
+        </a>
+        <a class="creative-card reveal" href="services/painting-art-practice.html">
+          <div class="creative-art painting-art" aria-hidden="true"><span class="painting-stroke"></span><span class="art-label">PAINTING / 03</span></div>
+          <div class="creative-body"><span>Original art / Artistic identity</span><h3>Painting & Artistic Identity</h3><p>A dedicated space for my practice in oil painting, digital painting and visual exploration.</p><strong>Enter the artistic practice ↗</strong></div>
+        </a>
       </div>
     </div>
   </section>
@@ -378,7 +399,7 @@
   <div class="shell footer-grid">
     <div>
       <a class="brand footer-brand" href="#top"><span class="brand-mark">ZB</span><span class="brand-name">Zohreh Barmaki</span></a>
-      <p>Digital systems, HealthTech, web applications and creative technology.</p>
+      <p>Digital systems, HealthTech, web applications, illustration, video and creative technology.</p>
     </div>
     <div class="footer-nav">
       <a href="#solutions">Solutions</a>
@@ -395,6 +416,7 @@
   <div class="shell copyright">© <span data-year></span> Zohreh Barmaki · Independent digital practice</div>
 </footer>
 
+<script src="assets/theme.js" defer></script>
 <script src="assets/portfolio-v2.js" defer></script>
 </body>
 </html>
