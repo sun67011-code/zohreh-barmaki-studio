@@ -1,16 +1,16 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="index,follow"><meta name="theme-color" content="#f4f2ed">
 <link rel="canonical" href="https://zohrehbarmaki.site/privacy.html"><link rel="icon" href="assets/icon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/portfolio-v2.css"><title>Privacy — Zohreh Barmaki</title>
+<script>(function(){try{document.documentElement.dataset.theme=localStorage.getItem("zb-theme")||"light"}catch(e){}})();</script><link rel="stylesheet" href="assets/portfolio-v2.css"><title>Privacy — Zohreh Barmaki</title>
 <style>.privacy-main{padding:145px 0 110px;min-height:85svh}.privacy-wrap{max-width:880px}.privacy-wrap h1{font-size:clamp(54px,8vw,100px);line-height:.9;letter-spacing:-.07em;font-weight:500;margin:20px 0 50px}.privacy-wrap h1 em{font-family:var(--serif);font-weight:400}.privacy-copy{font-size:16px;line-height:1.8;color:var(--muted)}.privacy-copy p{margin:0 0 22px}.privacy-copy b{color:var(--ink)}</style>
 </head>
 <body>
-<header class="site-header"><a class="brand" href="./"><span class="brand-mark">ZB</span><span class="brand-name">Zohreh Barmaki</span></a><nav class="desktop-nav"><a href="./#solutions">Solutions</a><a href="./#work">Selected work</a><a href="./#contact">Contact</a></nav><div class="header-actions"><a class="social-icon" href="./" aria-label="Back home">←</a></div></header>
+<header class="site-header"><a class="brand" href="./"><span class="brand-mark">ZB</span><span class="brand-name">Zohreh Barmaki</span></a><nav class="desktop-nav"><a href="./#solutions">Solutions</a><a href="./#work">Selected work</a><a href="./#contact">Contact</a></nav><div class="header-actions"><button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" aria-pressed="false"><span class="theme-icon" aria-hidden="true">☾</span><span class="theme-label">Dark</span></button><a class="social-icon" href="./" aria-label="Back home">←</a></div></header>
 <main class="privacy-main"><div class="shell privacy-wrap"><p class="eyebrow">Privacy</p><h1>Simple by<br><em>design.</em></h1><div class="privacy-copy">
 <p>This website is a professional portfolio and project-enquiry experience hosted on GitHub Pages, with a secure Supabase backend used only when you choose to submit a project enquiry.</p>
 <p><b>Project-enquiry information is transmitted only when you explicitly submit the form.</b> The submitted business and contact information is stored for review and follow-up.</p>
@@ -19,5 +19,5 @@
 <p>The enquiry backend may retain limited technical metadata needed for abuse prevention. The private client platform uses authenticated access for project records, milestones, updates, proposals, documents and project communication. No advertising trackers are intentionally installed.</p>
 </div><a class="button primary" href="./" style="margin-top:22px">Back to website</a></div></main>
 <footer class="site-footer"><div class="shell copyright" style="margin-top:0">© <span data-year></span> Zohreh Barmaki · Privacy</div></footer>
-<script>document.querySelector('[data-year]').textContent=new Date().getFullYear();const h=document.querySelector('.site-header');addEventListener('scroll',()=>h.classList.toggle('scrolled',scrollY>18),{passive:true});</script>
+<script src="assets/theme.js" defer></script><script>document.querySelector('[data-year]').textContent=new Date().getFullYear();const h=document.querySelector('.site-header');addEventListener('scroll',()=>h.classList.toggle('scrolled',scrollY>18),{passive:true});</script>
 </body></html>
