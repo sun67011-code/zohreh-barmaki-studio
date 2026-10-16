@@ -104,7 +104,15 @@ function renderSector(key){
         <b>${item[0]}</b>
         <p>${item[1]}</p>
       </div>`).join('');
-    $('#sectorOutcome').innerHTML=`<span>Outcome</span> ${data.outcome}`;
+    const directLinks={
+      hospital:['services/healthtech-systems.html','Explore clinical systems'],
+      physician:['services/web-app-development.html','Explore physician platforms'],
+      clinic:['services/ai-automation.html','Explore clinic automation'],
+      artist:['services/creative-web-experiences.html','Explore creative technology']
+    };
+    const next=directLinks[key];
+    $('#sectorOutcome').innerHTML=`<span>Outcome</span> ${data.outcome}`+
+      (next?` <a class="sector-more" href="${next[0]}">${next[1]} ↗</a>`:'');
     panel.classList.remove('is-changing');
   },120);
 }
@@ -119,6 +127,23 @@ $$('.sector-tab').forEach(tab=>{
   });
 });
 
+const offerParams=new URLSearchParams(location.search);
+const requestedService=offerParams.get('service')||'';
+const requestedOffer=offerParams.get('offer')||'';
+const serviceDisplayNames={
+  'discovery-and-strategy':'Digital Product Strategy',
+  'web-app-development':'Web & Application Development',
+  'ai-automation':'AI & Workflow Automation',
+  'healthtech-systems':'HealthTech & Clinical UX',
+  'seo-performance':'Technical SEO & Performance',
+  'creative-web-experiences':'Creative Web Experiences',
+  'video-production':'Video & Motion Production',
+  'storyboard-illustration':'Storyboards & Book Illustration',
+  'painting-art-practice':'Painting & Artistic Identity'
+};
+const validOffer=requestedOffer.length<=120?requestedOffer:'';
+const selectedService=serviceDisplayNames[requestedService]||'';
+
 const briefState={type:'Hospital / Clinical Systems'};
 $$('.choice').forEach(button=>{
   button.addEventListener('click',()=>{
@@ -129,6 +154,19 @@ $$('.choice').forEach(button=>{
     if(group.dataset.briefGroup==='type')briefState.type=button.dataset.value;
   });
 });
+
+if(selectedService){
+  const description=$('#briefSummary');
+  if(description && !description.value.trim()){
+    description.value='I would like to discuss '+selectedService+(validOffer?' — '+validOffer:'')+'. My project context is: ';
+    description.focus({preventScroll:true});
+    description.setSelectionRange(description.value.length,description.value.length);
+  }
+  if(requestedService==='healthtech-systems')briefState.type='Hospital / Clinical Systems';
+  if(['creative-web-experiences','video-production','storyboard-illustration','painting-art-practice'].includes(requestedService))briefState.type='Artist / Cultural Platform';
+  const match=$('.choice').find(b=>b.dataset.value===briefState.type);
+  if(match)$('.choice').forEach(b=>b.classList.toggle('on',b===match));
+}
 
 const enquiryEndpoint='https://yafkgsczvmsltyoilagt.supabase.co/functions/v1/submit-enquiry';
 const form=$('#projectForm');
