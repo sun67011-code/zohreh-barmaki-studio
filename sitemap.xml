@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://zohrehbarmaki.site/</loc><priority>1.0</priority></url>
-  <url><loc>https://zohrehbarmaki.site/profile.html</loc><priority>0.8</priority></url>
+  <url><loc>https://zohrehbarmaki.site/profile.html</loc><priority>0.9</priority></url>
+  <url><loc>https://zohrehbarmaki.site/services/discovery-and-strategy.html</loc><priority>0.8</priority></url>
+  <url><loc>https://zohrehbarmaki.site/services/web-app-development.html</loc><priority>0.8</priority></url>
+  <url><loc>https://zohrehbarmaki.site/services/ai-automation.html</loc><priority>0.8</priority></url>
+  <url><loc>https://zohrehbarmaki.site/services/healthtech-systems.html</loc><priority>0.8</priority></url>
+  <url><loc>https://zohrehbarmaki.site/services/seo-performance.html</loc><priority>0.8</priority></url>
+  <url><loc>https://zohrehbarmaki.site/services/creative-web-experiences.html</loc><priority>0.8</priority></url>
+  <url><loc>https://zohrehbarmaki.site/services/video-production.html</loc><priority>0.8</priority></url>
+  <url><loc>https://zohrehbarmaki.site/services/storyboard-illustration.html</loc><priority>0.8</priority></url>
+  <url><loc>https://zohrehbarmaki.site/services/painting-art-practice.html</loc><priority>0.8</priority></url>
   <url><loc>https://zohrehbarmaki.site/privacy.html</loc><priority>0.3</priority></url>
 </urlset>
