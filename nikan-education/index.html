@@ -145,7 +145,7 @@ html[lang="en"] .l-sub{text-transform:uppercase;letter-spacing:.06em;font-size:1
 .slides{display:grid;grid-template-columns:1fr 1fr;gap:40px 36px;perspective:1400px}
 .slide{position:relative;overflow:clip;isolation:isolate;aspect-ratio:3/2;padding:28px 32px 62px;border-radius:4px;
   box-shadow:0 26px 50px -24px rgba(2,5,20,.7),0 3px 10px rgba(3,6,25,.18);
-  background:radial-gradient(50% 60% at var(--gx,80%) var(--gy,10%),rgba(255,255,255,.85),transparent 60%),radial-gradient(45% 55% at var(--px,95%) var(--py,90%),rgba(150,170,245,.75),transparent 65%),radial-gradient(55% 60% at var(--bx,5%) var(--by,95%),rgba(55,85,185,.7),transparent 70%),linear-gradient(120deg,#d8dff7 0%,#eef1fc 35%,#d3dbf5 65%,#e2e7f9 100%);
+  background:radial-gradient(50% 60% at var(--gx,80%) var(--gy,10%),rgba(255,255,255,.85),transparent 60%),radial-gradient(45% 55% at var(--px,95%) var(--py,90%),rgba(150,170,245,.75),transparent 65%),radial-gradient(55% 60% at var(--bx,5%) var(--by,95%),rgba(55,85,185,.7),transparent 70%),linear-gradient(120deg,rgba(216,223,247,.62) 0%,rgba(238,241,252,.55) 35%,rgba(211,219,245,.6) 65%,rgba(226,231,249,.55) 100%);
   transform-style:preserve-3d;transition:transform .5s var(--ease)}
 .slide::before{content:"";position:absolute;inset:-40%;z-index:-1;background:conic-gradient(from 210deg at 50% 50%,transparent 0 18%,rgba(255,255,255,.4) 24%,transparent 32%,rgba(215,225,255,.4) 50%,transparent 58%,rgba(185,200,255,.35) 75%,transparent 82%);filter:blur(24px);animation:spin 22s linear infinite}
 .slide::after{content:"";position:absolute;inset:0;z-index:5;pointer-events:none;opacity:0;transition:opacity .4s;background:radial-gradient(400px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.35),transparent 45%)}
@@ -595,7 +595,57 @@ html[dir="rtl"] .badge-lux{padding:6px 6px 6px 14px}
 .corner .bl{bottom:-1px;left:110px;transform:rotate(180deg)}
 @keyframes draw{to{stroke-dashoffset:0}}
 .proto{position:fixed;bottom:16px;inset-inline-start:16px;z-index:44;padding:6px 12px;border-radius:99px;font-size:11px;color:#d4dbf3;background:rgba(13,24,56,.7);border:1px solid rgba(170,185,255,.25);backdrop-filter:blur(8px)}
-@media (max-width:680px){.corner svg{width:180px;height:180px}.corner .tr{right:40px}.corner .bl{left:30px}.proto{bottom:auto;top:76px;font-size:10px}}
+@media (max-width:680px){.corner{display:none}.proto{bottom:calc(90px + var(--safe-b));font-size:10px;opacity:.85}}
+
+/* ================= living gradient + glass + soft interactions ================= */
+#fluid{position:fixed;inset:0;width:100vw;height:100vh;z-index:-4;display:block}
+.has-gl .bg{opacity:.35}
+.landing{border-radius:26px;background:rgba(236,240,255,.16);border:1px solid rgba(255,255,255,.38);backdrop-filter:blur(30px) saturate(1.35);-webkit-backdrop-filter:blur(30px) saturate(1.35);box-shadow:0 40px 80px -36px rgba(2,5,25,.85),inset 0 1px 0 rgba(255,255,255,.65)}
+.landing .silk{opacity:.78;mix-blend-mode:normal}
+.landing::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.22) 45%,transparent 60%);background-size:250% 100%;animation:sheen 9s ease-in-out infinite}
+@keyframes sheen{0%,100%{background-position:120% 0}50%{background-position:-20% 0}}
+.slide{border-radius:18px;backdrop-filter:blur(22px) saturate(1.3);-webkit-backdrop-filter:blur(22px) saturate(1.3);border:1px solid rgba(255,255,255,.4);box-shadow:0 30px 60px -30px rgba(2,5,25,.85),inset 0 1px 0 rgba(255,255,255,.7)}
+.panel{background:rgba(236,240,252,.55)!important;backdrop-filter:blur(26px) saturate(1.4);-webkit-backdrop-filter:blur(26px) saturate(1.4);border:1px solid rgba(255,255,255,.45);box-shadow:0 30px 70px -34px rgba(2,5,25,.85),inset 0 1px 0 rgba(255,255,255,.7)}
+.lib-card{background:rgba(255,255,255,.5);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 10px 30px -22px rgba(10,20,70,.5)}
+.course{background:rgba(242,245,255,.62)!important;backdrop-filter:blur(18px) saturate(1.3);-webkit-backdrop-filter:blur(18px) saturate(1.3);border:1px solid rgba(255,255,255,.55);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 24px 44px -28px rgba(2,5,25,.8)}
+.stat{backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);box-shadow:inset 0 1px 0 rgba(255,255,255,.25)}
+.faq details{background:rgba(255,255,255,.5);backdrop-filter:blur(10px)}
+.faq details[open]{background:rgba(255,255,255,.78)}
+.topbar nav{background:rgba(236,240,255,.32);border-color:rgba(255,255,255,.5);box-shadow:0 12px 34px -16px rgba(2,5,25,.7),inset 0 1px 0 rgba(255,255,255,.6)}
+/* spotlight that follows the pointer */
+.spot{position:relative;isolation:isolate}
+.spot::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:3;opacity:0;transition:opacity .45s var(--ease);
+  background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.42),transparent 42%)}
+.spot:hover::before{opacity:1}
+.spot.edge{box-shadow:inset 0 0 0 1px rgba(255,255,255,.5)}
+/* springy hover + press */
+.lib-card,.course,.stat,.story,.cat,.chips a,.pill,.act,.seg button{transition:transform .5s cubic-bezier(.34,1.56,.64,1),box-shadow .4s,background .3s}
+.stat:hover{transform:translateY(-4px)}
+.pill:active,.cta-ring:active,.act:active,.cat:active,.seg button:active,.chips a:active,.ghost:active{transform:scale(.95)!important;transition-duration:.12s}
+/* ripple */
+.rip{position:relative;overflow:hidden}
+.ripple{position:absolute;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(255,255,255,.65),rgba(255,255,255,0) 70%);transform:translate(-50%,-50%) scale(0);animation:ripple .7s var(--ease) forwards}
+@keyframes ripple{to{transform:translate(-50%,-50%) scale(1);opacity:0}}
+/* soft cursor ring (desktop only) */
+.ring-cur{position:fixed;left:0;top:0;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;pointer-events:none;z-index:90;border:1.5px solid rgba(255,255,255,.75);box-shadow:0 0 18px rgba(140,160,255,.45);backdrop-filter:invert(.06);transition:width .35s var(--ease),height .35s var(--ease),margin .35s var(--ease),background .3s,opacity .3s;opacity:0}
+.ring-cur.on{opacity:1}
+.ring-cur.big{width:58px;height:58px;margin:-29px 0 0 -29px;background:rgba(255,255,255,.12)}
+.ring-dot{position:fixed;left:0;top:0;width:6px;height:6px;margin:-3px 0 0 -3px;border-radius:50%;background:#3cd8b4;pointer-events:none;z-index:91;box-shadow:0 0 10px #3cd8b4;opacity:0;transition:opacity .3s}
+.ring-dot.on{opacity:1}
+/* nav sliding indicator */
+.navlinks{position:relative}
+.nav-ind{position:absolute;top:0;bottom:0;border-radius:99px;background:rgba(255,255,255,.7);box-shadow:0 4px 14px -6px rgba(10,20,70,.5);transition:left .55s cubic-bezier(.34,1.4,.64,1),width .55s cubic-bezier(.34,1.4,.64,1),opacity .3s;z-index:0;opacity:0}
+.navlinks a{position:relative;z-index:1;color:#0d1838!important;opacity:.78;transition:opacity .3s}
+.navlinks a.on,.navlinks a:hover{opacity:1}
+.navlinks a.on,.navlinks a:hover{background:transparent}
+/* heading word reveal */
+.w{display:inline-block;white-space:pre}
+.js .sec-head .w{opacity:0;transform:translateY(60%) rotate(4deg);filter:blur(6px)}
+.js .sec-head.in .w{animation:wordUp .9s var(--ease) forwards;animation-delay:calc(var(--i) * 70ms + .1s)}
+@keyframes wordUp{to{opacity:1;transform:none;filter:none}}
+/* glowing gradient edge on hover */
+.course:hover,.lib-card:hover{box-shadow:0 0 0 1px rgba(255,255,255,.8),0 0 30px -6px rgba(124,148,255,.55),0 26px 50px -28px rgba(2,5,25,.85)}
+@media (max-width:680px){.landing{border-radius:28px}.slide{border-radius:24px}}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   .js .reveal,.node{opacity:1;transform:none}
@@ -604,6 +654,8 @@ html[dir="rtl"] .badge-lux{padding:6px 6px 6px 14px}
 </head>
 <body>
 <div class="splash" id="splash" aria-hidden="true"><div class="sp"><img src="assets/nikan-mark.png" alt=""><i></i><span>NIKAN · EDUCATION</span></div></div>
+<canvas id="fluid" aria-hidden="true"></canvas>
+<div class="ring-cur" aria-hidden="true"></div><div class="ring-dot" aria-hidden="true"></div>
 <div class="bg" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span><span class="b4"></span></div>
 <div class="grain" aria-hidden="true"></div>
 <div class="cursor-glow" aria-hidden="true"></div>
@@ -1295,6 +1347,108 @@ drawer.addEventListener('click', e => {
 drawer.addEventListener('click', e => { const r = e.target.closest('.related a'); if (r) { e.preventDefault(); location.hash = r.getAttribute('href'); } });
 addEventListener('hashchange', openFromHash);
 $('#sheet').addEventListener('close', () => {});
+
+
+/* ================= living gradient (WebGL) ================= */
+(() => {
+  const cv = document.getElementById('fluid');
+  const gl = cv.getContext('webgl', { antialias: false, premultipliedAlpha: false, powerPreference: 'low-power' });
+  if (!gl) return;
+  const vs = 'attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
+  const fs = `precision mediump float;uniform vec2 r;uniform float t;uniform vec2 m;
+  float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+  float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1.,0.)),f.x),mix(h(i+vec2(0.,1.)),h(i+1.),f.x),f.y);}
+  float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<5;i++){v+=a*n(p);p=p*2.02+vec2(1.3,.7);a*=.5;}return v;}
+  void main(){
+    vec2 uv=gl_FragCoord.xy/r; vec2 p=uv*vec2(r.x/r.y,1.)*1.5; float tt=t*.035;
+    vec2 q=vec2(fbm(p+vec2(0.,tt)),fbm(p+vec2(5.2,1.3)-tt));
+    vec2 w=vec2(fbm(p+3.*q+vec2(1.7,9.2)+tt*1.4+m*.35),fbm(p+3.*q+vec2(8.3,2.8)-tt*1.2-m*.25));
+    float f=fbm(p+2.6*w);
+    vec3 c=mix(vec3(.027,.047,.141),vec3(.10,.15,.38),smoothstep(.15,.7,f));
+    c=mix(c,vec3(.22,.30,.68),smoothstep(.35,.95,length(q)*f*1.2));
+    c=mix(c,vec3(.50,.57,.95),smoothstep(.55,.95,w.x*f*1.25)*.6);
+    c=mix(c,vec3(.17,.70,.64),smoothstep(.62,1.,w.y*f*1.25)*.32);
+    c*=1.-.35*length(uv-vec2(.5,.35));
+    c+=.025*(h(gl_FragCoord.xy+fract(t))-.5);
+    gl_FragColor=vec4(c,1.);
+  }`;
+  const sh = (type, src) => { const o = gl.createShader(type); gl.shaderSource(o, src); gl.compileShader(o); return gl.getShaderParameter(o, gl.COMPILE_STATUS) ? o : null; };
+  const v = sh(gl.VERTEX_SHADER, vs), f = sh(gl.FRAGMENT_SHADER, fs); if (!v || !f) return;
+  const pr = gl.createProgram(); gl.attachShader(pr, v); gl.attachShader(pr, f); gl.linkProgram(pr);
+  if (!gl.getProgramParameter(pr, gl.LINK_STATUS)) return;
+  gl.useProgram(pr);
+  gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,1,-1,-1,1,1,1]), gl.STATIC_DRAW);
+  const loc = gl.getAttribLocation(pr, 'p'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+  const uR = gl.getUniformLocation(pr, 'r'), uT = gl.getUniformLocation(pr, 't'), uM = gl.getUniformLocation(pr, 'm');
+  const scale = innerWidth < 700 ? .35 : .5;
+  const size = () => { cv.width = Math.round(innerWidth * scale); cv.height = Math.round(innerHeight * scale); gl.viewport(0, 0, cv.width, cv.height); gl.uniform2f(uR, cv.width, cv.height); };
+  size(); addEventListener('resize', size);
+  let mx = 0, my = 0, tx = 0, ty = 0, t0 = performance.now(), run = true;
+  addEventListener('pointermove', e => { tx = e.clientX / innerWidth - .5; ty = .5 - e.clientY / innerHeight; }, { passive: true });
+  document.addEventListener('visibilitychange', () => { run = !document.hidden; if (run) requestAnimationFrame(loop); });
+  function loop(now){
+    if (!run) return;
+    mx += (tx - mx) * .03; my += (ty - my) * .03;
+    gl.uniform1f(uT, reduce ? 20 : (now - t0) / 1000); gl.uniform2f(uM, mx, my);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    if (!reduce) requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+  document.documentElement.classList.add('has-gl');
+})();
+
+/* ================= soft interactions ================= */
+// spotlight on glass surfaces
+const spotSel = '.lib-card,.course,.stat,.panel,.faq details';
+document.addEventListener('pointermove', e => {
+  const el = e.target.closest && e.target.closest(spotSel); if (!el) return;
+  if (!el.classList.contains('spot')) el.classList.add('spot');
+  const r = el.getBoundingClientRect();
+  el.style.setProperty('--mx', (e.clientX - r.left) + 'px'); el.style.setProperty('--my', (e.clientY - r.top) + 'px');
+}, { passive: true });
+// ripple
+document.addEventListener('pointerdown', e => {
+  const b = e.target.closest('.pill,.seg button,.cat,.act,.chips a,.ghost,.story .ring,.hero-search button,.mini-btn'); if (!b) return;
+  b.classList.add('rip');
+  const r = b.getBoundingClientRect(), d = Math.max(r.width, r.height) * 2.2, s = document.createElement('span');
+  s.className = 'ripple'; s.style.cssText = `width:${d}px;height:${d}px;left:${e.clientX - r.left}px;top:${e.clientY - r.top}px`;
+  b.appendChild(s); setTimeout(() => s.remove(), 750);
+});
+// gentle 3D tilt for cards (desktop)
+if (fine && !reduce) {
+  document.addEventListener('pointermove', e => {
+    const c = e.target.closest && e.target.closest('.course,.lib-card'); if (!c) return;
+    const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+    c.style.transform = `perspective(900px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg) translateY(-4px)`;
+  }, { passive: true });
+  document.addEventListener('pointerout', e => { const c = e.target.closest && e.target.closest('.course,.lib-card'); if (c && !c.contains(e.relatedTarget)) c.style.transform = ''; });
+  // soft cursor ring
+  const ring = document.querySelector('.ring-cur'), dot = document.querySelector('.ring-dot');
+  let rx = -100, ry = -100, px = -100, py = -100;
+  addEventListener('pointermove', e => { px = e.clientX; py = e.clientY; ring.classList.add('on'); dot.classList.add('on');
+    dot.style.transform = `translate(${px}px,${py}px)`;
+    ring.classList.toggle('big', !!(e.target.closest && e.target.closest('a,button,input,select,summary,.lib-card,.course'))); }, { passive: true });
+  document.addEventListener('pointerleave', () => { ring.classList.remove('on'); dot.classList.remove('on'); });
+  (function follow(){ rx += (px - rx) * .16; ry += (py - ry) * .16; ring.style.transform = `translate(${rx}px,${ry}px)`; requestAnimationFrame(follow); })();
+}
+// nav sliding indicator
+(() => {
+  const nav = document.querySelector('.navlinks'); if (!nav) return;
+  const ind = document.createElement('span'); ind.className = 'nav-ind'; nav.prepend(ind);
+  const place = el => { if (!el || !el.offsetWidth) { ind.style.opacity = 0; return; } ind.style.opacity = 1; ind.style.left = el.offsetLeft + 'px'; ind.style.width = el.offsetWidth + 'px'; };
+  const current = () => nav.querySelector('a.on');
+  nav.addEventListener('pointerover', e => { const a = e.target.closest('a'); if (a) place(a); });
+  nav.addEventListener('pointerleave', () => place(current()));
+  new MutationObserver(() => place(current())).observe(nav, { subtree: true, attributes: true, attributeFilter: ['class'] });
+  addEventListener('resize', () => place(current()));
+  setTimeout(() => place(current()), 600);
+})();
+// split section headings into words for a staggered reveal
+document.querySelectorAll('.sec-head h2 [lang]').forEach(sp => {
+  const words = sp.textContent.split(/(\s+)/);
+  sp.innerHTML = words.map((w, i) => /^\s+$/.test(w) ? w : `<span class="w" style="--i:${i / 2}">${w.replace(/&/g,'&amp;').replace(/</g,'&lt;')}</span>`).join('');
+});
 
 /* ---------- init ---------- */
 sparkle(document); bindSheet(document);
