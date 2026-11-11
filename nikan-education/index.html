@@ -646,6 +646,209 @@ html[dir="rtl"] .badge-lux{padding:6px 6px 6px 14px}
 /* glowing gradient edge on hover */
 .course:hover,.lib-card:hover{box-shadow:0 0 0 1px rgba(255,255,255,.8),0 0 30px -6px rgba(124,148,255,.55),0 26px 50px -28px rgba(2,5,25,.85)}
 @media (max-width:680px){.landing{border-radius:28px}.slide{border-radius:24px}}
+
+/* ================= v2: fixes ================= */
+.cat,.story,.seg button{flex-shrink:0}
+.lib-card,.course,.cat,.seg,.story,.tabbar,.slide,.ptab,.jstep,.dir-row,.ringc{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.empty{color:var(--ink-2)!important;font-size:13.5px;font-weight:500}
+.lib-note{color:var(--ink-2)!important;font-size:11.5px}
+.slide p,.slide li{color:#2b365e}
+.slide .lead{color:#4a5583}
+.l-center h1 .acc{font-style:normal;background:linear-gradient(110deg,#1fa9a0,#3a4fb0 60%,#7b8cf0);-webkit-background-clip:text;background-clip:text;color:transparent}
+@media (max-width:680px){
+  .proto{display:none}
+  .landing{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:rgba(236,240,255,.9)}
+  .landing::after{display:none}
+  .lib-card,.course,.stat,.faq details,.slide,.dir-row{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+  .lib-card{background:rgba(255,255,255,.82)}
+  .course{background:rgba(242,245,255,.94)!important}
+  .slide{background-color:rgba(226,231,249,.9)}
+  .grain{display:none}
+  .panel{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:rgba(232,236,250,.93)!important}
+  .js .reveal{transform:translateY(16px);transition-duration:.55s}
+  .why{display:none}
+  .slide::before,.s1 .disc::after{animation:none!important;display:none}
+  .orb::before{animation:none!important}
+  .orb .spark{animation:none!important}
+  .story .ring,.story .ring span{animation:none!important}
+  .js .sec-head .w{filter:none}
+  .slide::after,.spot::before{display:none}
+  .landing .silk path{filter:none!important}
+  .landing .silk{filter:blur(18px);transform:scale(1.1)}
+  .seg{overflow-x:auto;scrollbar-width:none;flex-wrap:nowrap}
+  .seg::-webkit-scrollbar{display:none}
+  .seg button{flex:0 0 auto!important;padding:9px 14px}
+  .slide{min-height:420px}
+}
+
+/* ================= persona hub ================= */
+.ptabs{position:relative;display:flex;gap:4px;padding:5px;border-radius:99px;background:rgba(255,255,255,.55);border:1px solid #fff;overflow-x:auto;scrollbar-width:none;margin-bottom:22px}
+.ptabs::-webkit-scrollbar{display:none}
+.pind{position:absolute;top:5px;bottom:5px;border-radius:99px;background:linear-gradient(135deg,#0d1838,#1d2f73);box-shadow:0 8px 20px -8px rgba(13,24,56,.7);transition:left .55s cubic-bezier(.34,1.4,.64,1),width .55s cubic-bezier(.34,1.4,.64,1)}
+.ptab{position:relative;z-index:1;flex:1 0 auto;display:flex;align-items:center;justify-content:center;gap:8px;padding:11px 16px;border-radius:99px;font-size:13px;color:var(--ink-2);transition:color .35s;white-space:nowrap}
+.ptab svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:transform .5s cubic-bezier(.34,1.56,.64,1)}
+.ptab.on{color:#fff}
+.ptab.on svg{transform:scale(1.15) rotate(-6deg)}
+.pbody{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:start}
+.plead h3{font-size:22px;font-weight:600;line-height:1.4;margin-bottom:6px}
+.plead p{font-size:13.5px;color:var(--ink-2);margin-bottom:16px}
+.ptiles{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ptile{position:relative;display:flex;flex-direction:column;gap:6px;padding:16px;border-radius:20px;background:rgba(255,255,255,.62);border:1px solid #fff;transition:transform .5s cubic-bezier(.34,1.56,.64,1),box-shadow .4s;animation:tileIn .6s var(--ease) both;overflow:hidden}
+.ptile:hover{transform:translateY(-5px);box-shadow:0 18px 34px -20px rgba(13,24,56,.6)}
+.ptile .ti{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,#e6ebfa,#cfd8f5);color:#1d2f73}
+.ptile .ti svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ptile b{font-size:14px}
+.ptile small{font-size:11.5px;color:var(--ink-2);line-height:1.7}
+.ptile .arr{position:absolute;top:16px;inset-inline-end:16px;opacity:.35;transition:transform .4s var(--ease),opacity .3s}
+.ptile:hover .arr{opacity:1;transform:translateX(-4px)}
+html[dir="ltr"] .ptile:hover .arr{transform:translateX(4px)}
+@keyframes tileIn{from{opacity:0;transform:translateY(14px) scale(.97)}}
+.ptools{padding:18px;border-radius:22px;background:linear-gradient(160deg,rgba(13,24,56,.92),rgba(29,47,115,.9));color:#e9edfb;box-shadow:0 20px 40px -24px rgba(5,9,32,.9);animation:tileIn .6s .1s var(--ease) both}
+.ptools h4{font-size:12px;letter-spacing:.06em;color:#9ff0de;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.ptools h4::before{content:"";width:8px;height:8px;border-radius:50%;background:#3cd8b4;box-shadow:0 0 0 0 rgba(60,216,180,.6);animation:pulse2 2s infinite}
+@keyframes pulse2{70%{box-shadow:0 0 0 10px rgba(60,216,180,0)}}
+.ptools li{list-style:none;display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:13px;line-height:1.7}
+.ptools li:last-child{border:0}
+.ptools li svg{flex:none;width:18px;height:18px;margin-top:.25em;fill:none;stroke:#3cd8b4;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* ================= journeys ================= */
+.jseg{margin-bottom:22px;width:fit-content;max-width:100%}
+.journey{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:14px;padding-top:34px}
+.journey::before{content:"";position:absolute;top:56px;inset-inline:6%;height:3px;border-radius:3px;background:rgba(29,47,115,.12)}
+.journey .jline{position:absolute;top:56px;inset-inline-start:6%;height:3px;border-radius:3px;width:0;background:linear-gradient(90deg,#3cd8b4,#7b8cf0);box-shadow:0 0 14px rgba(60,216,180,.6);transition:width 1.8s var(--ease)}
+html[dir="rtl"] .journey .jline{background:linear-gradient(270deg,#3cd8b4,#7b8cf0)}
+.journey.go .jline{width:88%}
+.jstep{position:relative;text-align:center;opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s cubic-bezier(.34,1.4,.64,1)}
+.journey.go .jstep{opacity:1;transform:none}
+.jstep .jn{position:relative;z-index:1;width:46px;height:46px;margin:0 auto 12px;border-radius:50%;display:grid;place-items:center;background:#fff;color:#1d2f73;box-shadow:0 0 0 6px rgba(255,255,255,.55),0 12px 24px -10px rgba(13,24,56,.6)}
+.jstep .jn svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.jstep:hover .jn{background:linear-gradient(135deg,#1d2f73,#1fa9a0);color:#fff;transform:scale(1.08)}
+.jstep .jn{transition:transform .5s cubic-bezier(.34,1.56,.64,1),background .4s,color .3s}
+.jstep b{display:block;font-size:13.5px;margin-bottom:4px}
+.jstep p{font-size:11.8px;color:var(--ink-2);line-height:1.7}
+.jstep .tool{display:inline-block;margin-top:8px;font-size:10.5px;padding:3px 10px;border-radius:99px;background:rgba(31,169,160,.12);color:#13777f}
+
+/* ================= dashboard ================= */
+.dash-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:18px;margin-top:18px;align-items:start}
+.mini-kick{display:inline-block;font-size:10.5px;padding:3px 10px;border-radius:99px;background:rgba(170,184,255,.22);color:#3a4670;margin-bottom:8px}
+.dash-top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+.dash h3,.why h3{font-size:19px;font-weight:600;line-height:1.4}
+.dash-top p{font-size:12px;color:var(--ink-3)}
+.qr-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:14px;font-size:12.5px;color:#fff;background:linear-gradient(135deg,#0d1838,#1d2f73);box-shadow:0 10px 24px -12px rgba(13,24,56,.8);transition:transform .4s cubic-bezier(.34,1.56,.64,1)}
+.qr-btn:hover{transform:translateY(-2px) scale(1.03)}
+.qr-btn svg{width:18px;height:18px;fill:none;stroke:#3cd8b4;stroke-width:1.8}
+.rings{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+.ringc{position:relative;display:flex;flex-direction:column;align-items:center;padding:14px 8px;border-radius:20px;background:rgba(255,255,255,.55);border:1px solid #fff}
+.ringc svg{width:96px;height:96px;transform:rotate(-90deg)}
+.ringc circle{fill:none;stroke-width:10;stroke-linecap:round}
+.ringc .rb{stroke:rgba(29,47,115,.1)}
+.ringc .rf{stroke:url(#ringGrad);stroke-dasharray:314;stroke-dashoffset:314;transition:stroke-dashoffset 1.8s var(--ease)}
+.ringc .rv{position:absolute;top:47px;font-size:22px;font-weight:800;color:#0d1838}
+.ringc small{font-size:11px;color:var(--ink-2);text-align:center;margin-top:6px}
+.todo{list-style:none;display:grid;gap:8px}
+.todo li{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:16px;background:rgba(255,255,255,.6);border:1px solid #fff;transition:transform .4s cubic-bezier(.34,1.56,.64,1)}
+.todo li:hover{transform:translateX(-4px)}
+html[dir="ltr"] .todo li:hover{transform:translateX(4px)}
+.todo li>span{flex:1;display:flex;flex-direction:column}
+.todo b{font-size:13px}
+.todo small{font-size:11px;color:var(--ink-3)}
+.todo i{width:9px;height:9px;border-radius:50%;background:#7b8cf0;flex:none}
+.todo i.dot-warn{background:#e0a95e;box-shadow:0 0 0 4px rgba(224,169,94,.2)}
+.todo i.dot-ok{background:#2bb3a3}
+.go2{font-size:12px;padding:7px 14px;border-radius:99px;background:#0d1838;color:#fff}
+.badge-ok{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#2bb3a3;color:#fff;font-size:13px}
+.checks2{list-style:none;display:grid;gap:10px;margin-top:12px}
+.checks2 li{display:flex;gap:10px;font-size:13px;color:var(--ink-2);line-height:1.75}
+.checks2 li::before{content:"";flex:none;width:20px;height:20px;margin-top:.2em;border-radius:50%;background:linear-gradient(135deg,#1fa9a0,#3a4fb0) center/cover;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='10'/%3E%3C/svg%3E");box-shadow:inset 0 0 0 6px rgba(255,255,255,.0)}
+.checks2 li::before{background:radial-gradient(circle at 50% 50%,#fff 0 3px,transparent 4px),linear-gradient(135deg,#1fa9a0,#3a4fb0)}
+.scan{position:fixed;inset:0;z-index:85;display:grid;place-items:center;background:rgba(5,9,32,.6);backdrop-filter:blur(8px);opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s}
+.scan.on{opacity:1;visibility:visible}
+.scan .box{position:relative;width:220px;height:220px;border-radius:28px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.3);overflow:hidden}
+.scan .box::before,.scan .box::after{content:"";position:absolute;inset:18px;border:3px solid #3cd8b4;border-radius:18px;clip-path:polygon(0 0,30% 0,30% 6%,6% 6%,6% 30%,0 30%,0 70%,6% 70%,6% 94%,30% 94%,30% 100%,70% 100%,70% 94%,94% 94%,94% 70%,100% 70%,100% 30%,94% 30%,94% 6%,70% 6%,70% 0,100% 0,100% 100%,0 100%)}
+.scan .laser{position:absolute;inset-inline:24px;height:2px;top:24px;background:#3cd8b4;box-shadow:0 0 16px 3px rgba(60,216,180,.8);animation:laser 1.2s ease-in-out infinite alternate}
+@keyframes laser{to{top:194px}}
+.scan .ok{position:absolute;inset:0;display:grid;place-items:center;font-size:64px;color:#3cd8b4;opacity:0;transform:scale(.5);transition:all .5s cubic-bezier(.34,1.56,.64,1)}
+.scan.done .ok{opacity:1;transform:none}
+.scan.done .laser{display:none}
+.scan p{position:absolute;bottom:22%;inset-inline:0;text-align:center;color:#e9edfb;font-size:14px}
+
+/* ================= directory ================= */
+.dir-top{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;margin-bottom:14px}
+.dir-count{font-size:12px;color:var(--ink-2);margin:-6px 0 12px}
+.dir-list{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dir-row{position:relative;display:grid;grid-template-columns:42px 1fr auto;gap:12px;align-items:start;padding:14px;border-radius:18px;background:rgba(255,255,255,.6);border:1px solid #fff;animation:tileIn .5s var(--ease) both;transition:transform .45s cubic-bezier(.34,1.56,.64,1),box-shadow .35s}
+.dir-row:hover{transform:translateY(-3px);box-shadow:0 16px 30px -20px rgba(13,24,56,.6)}
+.dir-row .di{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:var(--tb,linear-gradient(135deg,#e6ebfa,#cfd8f5));color:#1d2f73}
+.dir-row .di svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.dir-row b{display:block;font-size:13.5px;line-height:1.5}
+.dir-row p{font-size:11.8px;color:var(--ink-2);line-height:1.7;margin:2px 0 6px}
+.dir-row .tg{display:flex;flex-wrap:wrap;gap:5px}
+.dir-row .tg span{font-size:10px;padding:2px 8px;border-radius:99px;background:rgba(29,47,115,.07);color:#3a4670}
+.st{font-size:10.5px;padding:3px 10px;border-radius:99px;white-space:nowrap}
+.st.live{background:rgba(43,179,163,.15);color:#13777f}
+.st.pilot{background:rgba(224,169,94,.18);color:#94621f}
+.st.prop{background:rgba(123,140,240,.18);color:#3a4fb0}
+
+/* ================= standards + roadmap ================= */
+.std-badges{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:22px}
+.sb{display:flex;flex-direction:column;gap:2px;padding:16px;border-radius:18px;background:rgba(255,255,255,.6);border:1px solid #fff}
+.sb i{font-style:normal;font-size:22px;margin-bottom:4px}
+.sb b{font-size:14px}
+.sb small{font-size:11.5px;color:var(--ink-2)}
+.road{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;counter-reset:rd;position:relative}
+.road li{counter-increment:rd;position:relative;padding:16px 16px 16px;border-radius:18px;background:rgba(255,255,255,.55);border:1px solid #fff;overflow:hidden}
+.road li::before{content:"";position:absolute;inset-inline:0;top:0;height:4px;background:linear-gradient(90deg,#3cd8b4,#7b8cf0);transform:scaleX(0);transform-origin:var(--o,right);transition:transform 1s var(--ease)}
+html[dir="ltr"] .road li::before{--o:left}
+.road.go li::before{transform:none}
+.road li:nth-child(2)::before{transition-delay:.3s}.road li:nth-child(3)::before{transition-delay:.6s}.road li:nth-child(4)::before{transition-delay:.9s}
+.road b{display:block;font-size:13.5px;margin-bottom:4px}
+.road small{font-size:11.5px;color:var(--ink-2);line-height:1.7}
+
+/* ================= teach-back quiz (drawer) ================= */
+.quiz{padding:16px;border-radius:20px;background:linear-gradient(160deg,#0d1838,#1d2f73);color:#e9edfb;position:relative;overflow:hidden}
+.quiz h4{color:#9ff0de!important}
+.quiz h4::before{background:#3cd8b4!important}
+.quiz .qq{font-size:calc(14px * var(--scale,1));font-weight:600;margin:6px 0 10px}
+.quiz .qprog{display:flex;gap:6px;margin-bottom:6px}
+.quiz .qprog i{flex:1;height:4px;border-radius:4px;background:rgba(255,255,255,.15);transition:background .4s}
+.quiz .qprog i.on{background:#3cd8b4}
+.qopt{display:block;width:100%;text-align:start;padding:11px 14px;margin-bottom:8px;border-radius:14px;font-size:calc(13px * var(--scale,1));background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#e9edfb;transition:background .3s,transform .4s cubic-bezier(.34,1.56,.64,1),border-color .3s}
+.qopt:hover{background:rgba(255,255,255,.14);transform:translateY(-2px)}
+.qopt.right{background:rgba(60,216,180,.22);border-color:#3cd8b4}
+.qopt.wrong{background:rgba(224,120,110,.2);border-color:#e0786e;animation:shake .45s}
+@keyframes shake{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+.qfb{font-size:12px;min-height:1.6em;color:#cfd8f5}
+.qdone{text-align:center;padding:10px 0}
+.qdone .big{font-size:44px;animation:pop2 .6s cubic-bezier(.34,1.56,.64,1)}
+@keyframes pop2{from{transform:scale(.3);opacity:0}}
+.confetti{position:absolute;width:7px;height:12px;top:-10px;border-radius:2px;animation:fall 1.6s ease-in forwards}
+@keyframes fall{to{transform:translateY(340px) rotate(540deg);opacity:0}}
+
+/* ================= liquid tab bar ================= */
+@media (max-width:680px){
+  .tabbar{background:rgba(13,24,56,.62);border:1px solid rgba(170,185,255,.28);box-shadow:0 18px 40px -14px rgba(2,5,25,.9),inset 0 1px 0 rgba(255,255,255,.18)}
+  .tabbar a{color:#aeb8de;z-index:1}
+  .tabbar a.on{color:#fff}
+  .tabbar a.on svg{animation:tbounce .6s cubic-bezier(.34,1.56,.64,1)}
+  @keyframes tbounce{30%{transform:translateY(-6px) scale(1.15)}60%{transform:translateY(1px) scale(.95)}100%{transform:translateY(-2px) scale(1.08)}}
+  .tpill{position:absolute;top:8px;bottom:8px;border-radius:18px;background:linear-gradient(160deg,rgba(255,255,255,.22),rgba(255,255,255,.06));border:1px solid rgba(255,255,255,.25);box-shadow:0 0 18px -4px rgba(60,216,180,.55),inset 0 1px 0 rgba(255,255,255,.3);transition:left .55s cubic-bezier(.34,1.4,.64,1),width .55s cubic-bezier(.34,1.4,.64,1),opacity .3s;opacity:0}
+  .tabbar .fab{box-shadow:0 0 0 6px rgba(13,24,56,.6),0 12px 28px -8px rgba(60,216,180,.7);animation:fabglow 3s ease-in-out infinite}
+  @keyframes fabglow{50%{box-shadow:0 0 0 6px rgba(13,24,56,.6),0 12px 36px -4px rgba(60,216,180,.95)}}
+  .pbody,.dash-grid{grid-template-columns:1fr}
+  .ptiles{grid-template-columns:1fr 1fr;gap:10px}
+  .ptile{padding:14px}
+  .journey{grid-template-columns:1fr;gap:0;padding-top:0;padding-inline-start:58px}
+  .journey::before,.journey .jline{top:20px;bottom:20px;height:auto;width:3px!important;inset-inline-start:22px;inset-inline-end:auto}
+  .journey .jline{height:0;transition:height 1.8s var(--ease)}
+  .journey.go .jline{height:calc(100% - 40px)}
+  .jstep{text-align:start;padding-bottom:20px}
+  .jstep .jn{position:absolute;inset-inline-start:-58px;top:0;margin:0}
+  .rings{gap:8px}.ringc svg{width:76px;height:76px}.ringc .rv{top:38px;font-size:18px}
+  .dir-top{grid-template-columns:1fr}
+  .dir-list{grid-template-columns:1fr}
+  .std-badges,.road{grid-template-columns:1fr}
+}
+@media (max-width:1060px) and (min-width:681px){.dir-list{grid-template-columns:1fr}.road{grid-template-columns:1fr 1fr}.journey{grid-template-columns:repeat(5,1fr)}}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   .js .reveal,.node{opacity:1;transform:none}
@@ -666,6 +869,7 @@ html[dir="rtl"] .badge-lux{padding:6px 6px 6px 14px}
   <filter id="b18" filterUnits="userSpaceOnUse" x="-300" y="-300" width="1800" height="1300"><feGaussianBlur stdDeviation="18"/></filter>
   <linearGradient id="ribGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1fa98a"/><stop offset=".5" stop-color="#3cd8b4"/><stop offset="1" stop-color="#1d2f73"/></linearGradient>
   <linearGradient id="ribGrad2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffffff" stop-opacity="0"/><stop offset=".5" stop-color="#ffffff"/><stop offset="1" stop-color="#aab8ff"/></linearGradient>
+  <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3cd8b4"/><stop offset="1" stop-color="#3a4fb0"/></linearGradient>
   <linearGradient id="pathGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1fa98a"/><stop offset=".5" stop-color="#3cd8b4"/><stop offset="1" stop-color="#9ff0da"/></linearGradient>
 </svg>
 
@@ -677,8 +881,8 @@ html[dir="rtl"] .badge-lux{padding:6px 6px 6px 14px}
       <a href="#home" data-spy="home"><span lang="fa">خانه</span><span lang="en">Home</span></a>
       <a href="#library" data-spy="library"><span lang="fa">کتابخانه سلامت</span><span lang="en">Health Library</span></a>
       <a href="#courses" data-spy="courses"><span lang="fa">دوره‌ها</span><span lang="en">Courses</span></a>
-      <a href="#slides" data-spy="slides"><span lang="fa">واحدها</span><span lang="en">Units</span></a>
-      <a href="#faq" data-spy="faq"><span lang="fa">سؤالات</span><span lang="en">FAQ</span></a>
+      <a href="#digital" data-spy="digital"><span lang="fa">تحول دیجیتال</span><span lang="en">Digital</span></a>
+      <a href="#directory" data-spy="directory"><span lang="fa">دایرکتوری</span><span lang="en">Directory</span></a>
       <a href="#contact" data-spy="contact"><span lang="fa">تماس</span><span lang="en">Contact</span></a>
     </div>
     <div class="nav-end">
@@ -691,7 +895,7 @@ html[dir="rtl"] .badge-lux{padding:6px 6px 6px 14px}
 <main class="board">
 
 <!-- ================= HERO ================= -->
-<section class="landing reveal" id="home">
+<section class="landing" id="home">
   <div class="silk" aria-hidden="true">
     <svg viewBox="0 0 1200 640" preserveAspectRatio="xMidYMid slice">
       <defs>
@@ -740,7 +944,7 @@ html[dir="rtl"] .badge-lux{padding:6px 6px 6px 14px}
   <div class="l-center">
     <span class="badge-lux"><img src="assets/nikan-mark.png" alt=""><span lang="fa"><b>بیمارستان نیکان</b> · آموزش</span><span lang="en"><b>Nikan Hospital</b> · Education</span></span>
     <span class="eyebrow">NIKAN · EDUCATION</span>
-    <h1><span lang="fa">دپارتمان آموزش</span><span lang="en">Education</span></h1>
+    <h1><span lang="fa">دپارتمان <em class="acc">آموزش</em></span><span lang="en">Edu<em class="acc">cation</em></span></h1>
     <p class="l-sub"><span lang="fa">آموزش بیمار و خانواده، آموزش کادر درمان، دوره‌های مهارتی<br>و کلاس‌های سلامت جامعه، با تقویم و ثبت‌نام آنلاین</span><span lang="en">Patient &amp; family education, clinical staff training,<br>skills courses and community health classes</span></p>
     <form class="hero-search" id="heroSearch" role="search">
       <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
@@ -782,6 +986,17 @@ html[dir="rtl"] .badge-lux{padding:6px 6px 6px 14px}
   <div class="stat reveal d3"><b data-count="12">12</b><small><span lang="fa">ماه تا اجرای کامل</span><span lang="en">months to full rollout</span></small></div>
 </div>
 
+
+<!-- ================= FOR YOU (persona hub) ================= -->
+<div class="sec-head reveal" id="for-you">
+  <div><span class="kick">FOR YOU</span><h2><span lang="fa">شما کدام هستید؟</span><span lang="en">Who are you?</span></h2></div>
+  <p><span lang="fa">هر مخاطب مسیر، ابزار دیجیتال و محتوای مخصوص خودش را دارد.</span><span lang="en">Every audience gets its own path, digital tools and content.</span></p>
+</div>
+<section class="panel reveal persona">
+  <div class="ptabs" id="ptabs" role="tablist"><span class="pind"></span></div>
+  <div class="pbody" id="pbody" aria-live="polite"></div>
+</section>
+
 <!-- ================= HEALTH LIBRARY ================= -->
 <div class="sec-head reveal" id="library">
   <div><span class="kick">HEALTH LIBRARY</span><h2><span lang="fa">کتابخانه سلامت</span><span lang="en">Health Library</span></h2></div>
@@ -821,6 +1036,67 @@ html[dir="rtl"] .badge-lux{padding:6px 6px 6px 14px}
 </div>
 <div class="courses" id="courseGrid"></div>
 <div class="dots" id="cdots" aria-hidden="true"></div>
+
+
+<!-- ================= DIGITAL TRANSFORMATION ================= -->
+<div class="sec-head reveal" id="digital">
+  <div><span class="kick">DIGITAL TRANSFORMATION</span><h2><span lang="fa">تحول دیجیتال آموزش</span><span lang="en">Digital learning, end to end</span></h2></div>
+  <p><span lang="fa">بیمار و کادر درمان در هر مرحله یک نقطه تماس دیجیتال دارند؛ هر آموزش ثبت، سنجیده و پیگیری می‌شود.</span><span lang="en">Patients and staff meet a digital touchpoint at every step — every lesson is logged, measured and followed up.</span></p>
+</div>
+<section class="panel reveal">
+  <div class="seg jseg" id="jseg">
+    <button data-j="patient" class="on"><span lang="fa">مسیر دیجیتال بیمار</span><span lang="en">Patient journey</span></button>
+    <button data-j="staff"><span lang="fa">مسیر دیجیتال کادر درمان</span><span lang="en">Staff journey</span></button>
+  </div>
+  <div class="journey" id="journey"></div>
+</section>
+
+<div class="dash-grid">
+  <section class="panel reveal dash" id="dash">
+    <div class="dash-top">
+      <div><span class="mini-kick"><span lang="fa">نمونه رابط · داده نمونه</span><span lang="en">Interface preview · sample data</span></span><h3><span lang="fa">داشبورد آموزشی من</span><span lang="en">My learning dashboard</span></h3><p><span lang="fa">پرستار بخش مراقبت ویژه</span><span lang="en">Critical-care nurse</span></p></div>
+      <button class="qr-btn" id="qrBtn"><svg viewBox="0 0 24 24"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4z"/><path d="M14 14h2v2h-2zM18 14h2v2h-2zM14 18h2v2h-2zM18 18h2v2h-2z"/></svg><span lang="fa">ثبت حضور با QR</span><span lang="en">Check in with QR</span></button>
+    </div>
+    <div class="rings">
+      <div class="ringc" data-v="72"><svg viewBox="0 0 120 120"><circle class="rb" cx="60" cy="60" r="50"/><circle class="rf" cx="60" cy="60" r="50"/></svg><b class="rv" data-n="72">0</b><small><span lang="fa">آموزش‌های الزامی</span><span lang="en">Mandatory done</span></small></div>
+      <div class="ringc" data-v="45"><svg viewBox="0 0 120 120"><circle class="rb" cx="60" cy="60" r="50"/><circle class="rf" cx="60" cy="60" r="50"/></svg><b class="rv" data-n="18">0</b><small><span lang="fa">ساعت از ۴۰ ساعت سال</span><span lang="en">of 40 yearly hours</span></small></div>
+      <div class="ringc" data-v="48"><svg viewBox="0 0 120 120"><circle class="rb" cx="60" cy="60" r="50"/><circle class="rf" cx="60" cy="60" r="50"/></svg><b class="rv" data-n="12">0</b><small><span lang="fa">امتیاز بازآموزی از ۲۵</span><span lang="en">of 25 CME credits</span></small></div>
+    </div>
+    <ul class="todo">
+      <li><i class="dot-warn"></i><span><b><span lang="fa">احیای قلبی‌ریوی پیشرفته</span><span lang="en">Advanced life support</span></b><small><span lang="fa">الزامی · ۳ روز مانده</span><span lang="en">Mandatory · due in 3 days</span></small></span><a href="#course/acls" class="go2"><span lang="fa">شروع</span><span lang="en">Start</span></a></li>
+      <li><i></i><span><b><span lang="fa">بازآموزی کنترل عفونت</span><span lang="en">Infection control refresher</span></b><small><span lang="fa">آنلاین · ۲۵ دقیقه</span><span lang="en">Online · 25 min</span></small></span><a href="#course/infection" class="go2"><span lang="fa">ادامه</span><span lang="en">Resume</span></a></li>
+      <li><i class="dot-ok"></i><span><b><span lang="fa">آموزش بیمار با روش Teach-back</span><span lang="en">Teach-back patient education</span></b><small><span lang="fa">تکمیل شد · گواهی صادر شد</span><span lang="en">Completed · certificate issued</span></small></span><span class="badge-ok">✓</span></li>
+    </ul>
+  </section>
+  <section class="panel reveal why">
+    <span class="mini-kick"><span lang="fa">چرا دیجیتال؟</span><span lang="en">Why digital?</span></span>
+    <h3><span lang="fa">آموزشی که ثبت نشود، انجام نشده است</span><span lang="en">If it isn't recorded, it didn't happen</span></h3>
+    <ul class="checks2">
+      <li><span lang="fa">ثبت آموزش هر بیمار در پرونده الکترونیک، قابل ارائه در اعتباربخشی</span><span lang="en">Every patient lesson logged in the EHR, ready for accreditation</span></li>
+      <li><span lang="fa">تأیید فهم بیمار با آزمون سه‌سؤالی Teach-back پیش از ترخیص</span><span lang="en">Patient understanding confirmed with a 3-question teach-back before discharge</span></li>
+      <li><span lang="fa">پرونده آموزشی هر همکار: ساعت، آزمون، امتیاز و گواهی</span><span lang="en">A training record per colleague: hours, quizzes, credits, certificates</span></li>
+      <li><span lang="fa">گزارش لحظه‌ای برای مدیریت پرستاری و کیفیت</span><span lang="en">Live reports for nursing and quality management</span></li>
+      <li><span lang="fa">کاهش کاغذ: بروشور، فرم حضور و گواهی، همه دیجیتال</span><span lang="en">Less paper: brochures, attendance and certificates go digital</span></li>
+    </ul>
+  </section>
+</div>
+
+<!-- ================= EDUCATION DIRECTORY ================= -->
+<div class="sec-head reveal" id="directory">
+  <div><span class="kick">EDUCATION DIRECTORY</span><h2><span lang="fa">دایرکتوری آموزشی</span><span lang="en">Education Directory</span></h2></div>
+  <p><span lang="fa">همه برنامه‌ها، منابع، خدمات و فضاهای آموزشی در یک‌جا؛ با وضعیت هر مورد.</span><span lang="en">Every programme, resource, service and space in one place — with its current status.</span></p>
+</div>
+<section class="panel reveal">
+  <div class="dir-top">
+    <label class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      <input id="dirQ" type="search" data-ph-fa="جستجو در برنامه‌ها، منابع و خدمات…" data-ph-en="Search programmes, resources, services…" placeholder="جستجو در برنامه‌ها، منابع و خدمات…" aria-label="search directory"></label>
+    <div class="seg" id="dirStatus"></div>
+  </div>
+  <div class="cats" id="dirAud"></div>
+  <div class="dir-count" id="dirCount"></div>
+  <div class="dir-list" id="dirList"></div>
+  <p class="lib-note"><span lang="fa">«موجود» یعنی در سایت فعلی بیمارستان دیده شده؛ «پیشنهادی» در این طرح اضافه شده است.</span><span lang="en">"Live" items appear on the hospital's current site; "Proposed" items are added by this plan.</span></p>
+</section>
 
 <!-- ================= LEARNING PATH ================= -->
 <div class="sec-head reveal" id="path">
@@ -947,6 +1223,26 @@ html[dir="rtl"] .badge-lux{padding:6px 6px 6px 14px}
 </div>
 <div class="dots" id="dots" aria-hidden="true"></div>
 
+
+<!-- ================= STANDARDS + ROADMAP ================= -->
+<div class="sec-head reveal" id="roadmap">
+  <div><span class="kick">STANDARDS &amp; ROADMAP</span><h2><span lang="fa">استانداردها و نقشه راه</span><span lang="en">Standards &amp; roadmap</span></h2></div>
+  <p><span lang="fa">طراحی شده در راستای الزامات آموزش بیمار و خانواده در اعتباربخشی ملی و بین‌المللی.</span><span lang="en">Designed around patient- and family-education requirements in national and international accreditation.</span></p>
+</div>
+<section class="panel reveal std">
+  <div class="std-badges">
+    <div class="sb"><i>🏥</i><b><span lang="fa">اعتباربخشی ملی بیمارستان‌ها</span><span lang="en">National hospital accreditation</span></b><small><span lang="fa">آموزش بیمار و ضمن خدمت</span><span lang="en">Patient &amp; in-service education</span></small></div>
+    <div class="sb"><i>🌐</i><b>JCI · PFE</b><small><span lang="fa">آموزش بیمار و خانواده</span><span lang="en">Patient &amp; Family Education</span></small></div>
+    <div class="sb"><i>🛡️</i><b>WHO</b><small><span lang="fa">ایمنی بیمار و بهداشت دست</span><span lang="en">Patient safety &amp; hand hygiene</span></small></div>
+  </div>
+  <ol class="road" id="road">
+    <li><b><span lang="fa">فاز ۱ · پایه</span><span lang="en">Phase 1 · Foundation</span></b><small><span lang="fa">ماه ۱ تا ۳ — صفحه مادر، تقویم، ثبت‌نام آنلاین، اینستاگرام</span><span lang="en">Months 1–3 — hub page, calendar, online enrollment, Instagram</span></small></li>
+    <li><b><span lang="fa">فاز ۲ · آموزش بیمار</span><span lang="en">Phase 2 · Patients</span></b><small><span lang="fa">ماه ۴ تا ۶ — ۱۵ راهنما، QR ترخیص، Teach-back</span><span lang="en">Months 4–6 — 15 guides, discharge QR, teach-back</span></small></li>
+    <li><b><span lang="fa">فاز ۳ · کادر و مهارتی</span><span lang="en">Phase 3 · Staff &amp; skills</span></b><small><span lang="fa">ماه ۷ تا ۹ — سامانه یادگیری، حضور QR، دوره کمک‌پرستاری</span><span lang="en">Months 7–9 — LMS, QR attendance, nursing-aide course</span></small></li>
+    <li><b><span lang="fa">فاز ۴ · تثبیت</span><span lang="en">Phase 4 · Scale</span></b><small><span lang="fa">ماه ۱۰ تا ۱۲ — ۳۰ راهنما، نسخه انگلیسی کامل، گزارش سالانه</span><span lang="en">Months 10–12 — 30 guides, full English, annual report</span></small></li>
+  </ol>
+</section>
+
 <!-- ================= FAQ ================= -->
 <div class="sec-head reveal" id="faq">
   <div><span class="kick">FAQ</span><h2><span lang="fa">سؤالات متداول</span><span lang="en">Frequently Asked Questions</span></h2></div>
@@ -1016,7 +1312,7 @@ html[dir="rtl"] .badge-lux{padding:6px 6px 6px 14px}
   <div class="copy"><button class="install" id="installBtn"><img src="assets/nikan-mark.png" alt=""><span lang="fa">نصب اپ آموزش نیکان</span><span lang="en">Install the Nikan Education app</span></button><span><span lang="fa">نمونه طراحی پیشنهادی — نسخه ۱</span><span lang="en">Proposed design prototype — v1</span></span><span>Nikan Aqdasiyeh · Education</span></div>
 </footer>
 
-<nav class="tabbar" aria-label="tabs">
+<nav class="tabbar" aria-label="tabs"><span class="tpill"></span>
   <a href="#home" data-spy="home" class="on"><svg viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v8a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z"/></svg><span lang="fa">خانه</span><span lang="en">Home</span></a>
   <a href="#library" data-spy="library"><svg viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5"/><path d="M9 7h6"/></svg><span lang="fa">کتابخانه</span><span lang="en">Library</span></a>
   <button class="fab" data-sheet aria-label="enroll"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
@@ -1036,6 +1332,7 @@ html[dir="rtl"] .badge-lux{padding:6px 6px 6px 14px}
   </form>
 </dialog>
 <dialog class="drawer" id="drawer" aria-labelledby="drTitle"><div class="dr-in" id="drIn"></div></dialog>
+<div class="scan" id="scan" aria-hidden="true"><div class="box"><span class="laser"></span><span class="ok">✓</span></div><p id="scanTxt"></p></div>
 <div class="toast" id="toast" role="status"></div>
 
 <script src="assets/data.js"></script>
@@ -1201,6 +1498,7 @@ function setLang(l, animate){
   $$('[data-count]').forEach(el => el.textContent = num(el.dataset.done ? el.dataset.count : 0));
   $$('.num').forEach(el => el.textContent = num(el.dataset.n));
   renderCats(); renderLib(); renderCourses(); renderSelect();
+  if (typeof renderPersonas === 'function') { renderPersonas(); renderJourney(); renderDir(); if (current && current.type === 'guide') mountQuiz(); }
   if (current) { drIn.innerHTML = current.type === 'guide' ? renderGuide(current.item) : renderCourse(current.item); sparkle(drIn); bindSheet(drIn); }
   requestAnimationFrame(() => { moveKnob(); layoutPath(); setupDots($('#carousel'), $('#dots')); });
   try { localStorage.setItem('nikan-lang', l); } catch(e) {}
@@ -1211,7 +1509,7 @@ $$('.lang button').forEach(b => b.addEventListener('click', () => setLang(b.data
 $$('[data-setlang]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); setLang(a.dataset.setlang, true); scrollTo({top:0, behavior:'smooth'}); }));
 
 /* ---------- reveal / counters / progress / spy ---------- */
-const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:.1});
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:0, rootMargin:'0px 0px 25% 0px'});
 $$('.reveal').forEach(el => io.observe(el));
 const cio = new IntersectionObserver(es => es.forEach(e => {
   if (!e.isIntersecting) return; cio.unobserve(e.target);
@@ -1223,8 +1521,13 @@ $$('[data-count]').forEach(el => cio.observe(el));
 const bar = $('.progress');
 addEventListener('scroll', () => { const h = document.documentElement; bar.style.transform = `scaleX(${h.scrollTop/(h.scrollHeight-h.clientHeight||1)})`; }, {passive:true});
 const links = $$('[data-spy]');
-const spy = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) links.forEach(l => l.classList.toggle('on', l.dataset.spy === e.target.id)); }), {rootMargin:'-45% 0px -50% 0px'});
-['home','library','courses','slides','faq','contact'].forEach(id => spy.observe(document.getElementById(id)));
+const SPYMAP = {'home':'home','for-you':'home','library':'library','courses':'courses','digital':'digital','directory':'directory','path':'courses','slides':'slides','roadmap':'slides','faq':'faq','contact':'contact'};
+const spyEls = Object.keys(SPYMAP).map(id => document.getElementById(id)).filter(Boolean);
+let spyRaf = 0;
+function spyUpdate(){ spyRaf = 0; const line = innerHeight * .4; let cur = 'home';
+  spyEls.forEach(el => { if (el.getBoundingClientRect().top <= line) cur = el.id; });
+  const k = SPYMAP[cur] || cur; links.forEach(l => l.classList.toggle('on', l.dataset.spy === k)); }
+addEventListener('scroll', () => { if (!spyRaf) spyRaf = requestAnimationFrame(spyUpdate); }, { passive:true }); spyUpdate();
 
 /* ---------- desktop motion ---------- */
 if (fine && !reduce) {
@@ -1358,9 +1661,9 @@ $('#sheet').addEventListener('close', () => {});
   const fs = `precision mediump float;uniform vec2 r;uniform float t;uniform vec2 m;
   float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
   float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1.,0.)),f.x),mix(h(i+vec2(0.,1.)),h(i+1.),f.x),f.y);}
-  float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<5;i++){v+=a*n(p);p=p*2.02+vec2(1.3,.7);a*=.5;}return v;}
+  float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<3;i++){v+=a*n(p);p=p*2.03+vec2(1.3,.7);a*=.5;}return v;}
   void main(){
-    vec2 uv=gl_FragCoord.xy/r; vec2 p=uv*vec2(r.x/r.y,1.)*1.5; float tt=t*.035;
+    vec2 uv=gl_FragCoord.xy/r; vec2 p=uv*vec2(r.x/r.y,1.)*1.5; float tt=t*.06;
     vec2 q=vec2(fbm(p+vec2(0.,tt)),fbm(p+vec2(5.2,1.3)-tt));
     vec2 w=vec2(fbm(p+3.*q+vec2(1.7,9.2)+tt*1.4+m*.35),fbm(p+3.*q+vec2(8.3,2.8)-tt*1.2-m*.25));
     float f=fbm(p+2.6*w);
@@ -1381,14 +1684,16 @@ $('#sheet').addEventListener('close', () => {});
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,1,-1,-1,1,1,1]), gl.STATIC_DRAW);
   const loc = gl.getAttribLocation(pr, 'p'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
   const uR = gl.getUniformLocation(pr, 'r'), uT = gl.getUniformLocation(pr, 't'), uM = gl.getUniformLocation(pr, 'm');
-  const scale = innerWidth < 700 ? .35 : .5;
+  const scale = innerWidth < 700 ? .22 : .38;
   const size = () => { cv.width = Math.round(innerWidth * scale); cv.height = Math.round(innerHeight * scale); gl.viewport(0, 0, cv.width, cv.height); gl.uniform2f(uR, cv.width, cv.height); };
   size(); addEventListener('resize', size);
   let mx = 0, my = 0, tx = 0, ty = 0, t0 = performance.now(), run = true;
   addEventListener('pointermove', e => { tx = e.clientX / innerWidth - .5; ty = .5 - e.clientY / innerHeight; }, { passive: true });
   document.addEventListener('visibilitychange', () => { run = !document.hidden; if (run) requestAnimationFrame(loop); });
+  let last = 0;
   function loop(now){
     if (!run) return;
+    if (now - last < 33) { requestAnimationFrame(loop); return; } last = now;
     mx += (tx - mx) * .03; my += (ty - my) * .03;
     gl.uniform1f(uT, reduce ? 20 : (now - t0) / 1000); gl.uniform2f(uM, mx, my);
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
@@ -1398,6 +1703,239 @@ $('#sheet').addEventListener('close', () => {});
   document.documentElement.classList.add('has-gl');
 })();
 
+
+/* ================= v2 data ================= */
+const IC = {
+  book:'<path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5"/>',
+  users:'<circle cx="9" cy="8" r="3.2"/><path d="M3 20c.6-3.6 3-5.5 6-5.5s5.4 1.9 6 5.5"/><path d="M16 4.5a3 3 0 0 1 0 6M18 14.5c1.7.6 2.8 2.4 3 5.5"/>',
+  nurse:'<path d="M6 8V5l6-2 6 2v3"/><path d="M6 8a6 6 0 0 0 12 0"/><path d="M12 4.5v2.5M10.8 5.7h2.4"/><path d="M4 21c.8-3.8 4-6 8-6s7.2 2.2 8 6"/>',
+  doctor:'<circle cx="12" cy="7" r="4"/><path d="M4 21c.8-4 4-6 8-6s7.2 2 8 6"/><path d="M9 15v3a2 2 0 0 0 4 0"/><circle cx="16" cy="18.5" r="1.4"/>',
+  staff:'<rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V4h6v3M4 12h16"/>',
+  globe:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/>',
+  video:'<rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3z"/>',
+  qr:'<path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4z"/><path d="M14 14h2v2h-2zM18 18h2v2h-2zM14 18h2M18 14h2"/>',
+  sms:'<path d="M4 5h16v11H9l-5 4z"/><path d="M8 10h8"/>',
+  phone:'<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/>',
+  chart:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
+  lms:'<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4M9 9l2 2 4-4"/>',
+  room:'<path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-6h6v6"/>',
+  shield:'<path d="M12 3l8 3v6c0 4.5-3.4 7.6-8 9-4.6-1.4-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/>',
+  heart:'<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/>',
+  cal:'<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/>',
+  check:'<path d="M5 12l4 4 10-10"/>',
+  mic:'<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/>',
+  star:'<path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/>',
+  bed:'<path d="M3 18V7M3 14h18v4M21 14v-3a3 3 0 0 0-3-3h-7v6"/><circle cx="7" cy="11" r="2"/>',
+  arrow:'<path d="M15 6l-6 6 6 6"/>'
+};
+const svg = k => `<svg viewBox="0 0 24 24">${IC[k]}</svg>`;
+const T2 = (fa, en) => ({ fa, en });
+const PERSONAS = [
+  { id:'patient', ic:'heart', n:T2('بیمار و همراه','Patients & families'),
+    h:T2('قبل، حین و بعد از بستری کنار شما هستیم','We are with you before, during and after your stay'),
+    p:T2('راهنمای ساده بیماری شما، کلاس‌های عمومی و پیگیری پس از ترخیص؛ همه روی موبایل.','Plain-language guides, public classes and follow-up after discharge — all on your phone.'),
+    tiles:[['book','#library',T2('کتابخانه سلامت','Health library'),T2('راهنمای بیماری و عمل شما','Guides for your condition')],
+           ['check','#guide/angioplasty-stents',T2('آزمون «متوجه شدم»','"I got it" check'),T2('سه سؤال کوتاه پس از مطالعه','Three quick questions after reading')],
+           ['cal','#courses',T2('کلاس‌های عمومی','Public classes'),T2('بارداری، شیردهی، وبینار','Pregnancy, breastfeeding, webinars')],
+           ['phone','#digital',T2('پیگیری پس از ترخیص','After-discharge follow-up'),T2('یادآور دارو و تماس ۷۲ ساعته','Medicine reminders and a 72-hour call')]],
+    tools:[['qr',T2('کد QR روی برگه ترخیص برای باز شدن راهنمای همان بیماری','A QR code on the discharge sheet opens your exact guide')],['sms',T2('یادآور پیامکی دارو و تاریخ مراجعه بعدی','SMS reminders for medicines and your next visit')],['video',T2('ویدیوی آموزشی روی تبلت کنار تخت','Teaching videos on a bedside tablet')],['chart',T2('نظرسنجی آنلاین کیفیت آموزش','An online survey on the quality of your education')]] },
+  { id:'nurse', ic:'nurse', n:T2('پرستار و ماما','Nurses & midwives'),
+    h:T2('آموزش ضمن خدمت، صلاحیت بالینی و امتیاز، در یک پرونده','In-service training, competencies and credits in one record'),
+    p:T2('دوره‌های الزامی، آزمون آنلاین، حضور با QR و ثبت آموزش بیمار در پرونده الکترونیک.','Mandatory courses, online quizzes, QR attendance and patient-education logging in the EHR.'),
+    tiles:[['chart','#dash',T2('داشبورد آموزشی من','My learning dashboard'),T2('ساعت، امتیاز و سررسیدها','Hours, credits and due dates')],
+           ['cal','#courses',T2('دوره‌های ضمن خدمت','In-service courses'),T2('احیا، کنترل عفونت، ایمنی','Life support, infection control, safety')],
+           ['room','#directory',T2('رزرو اتاق مهارت','Book the skills lab'),T2('مانور و شبیه‌سازی','Drills and simulation')],
+           ['check','#digital',T2('ثبت آموزش بیمار','Log patient education'),T2('روش Teach-back در بخش','Teach-back on the ward')]],
+    tools:[['qr',T2('ثبت حضور در کلاس با اسکن QR','Class attendance by scanning a QR code')],['lms',T2('میکرولرنینگ ۵ دقیقه‌ای روی موبایل','5-minute micro-learning on mobile')],['shield',T2('چک‌لیست دیجیتال صلاحیت بالینی','Digital clinical-competency checklists')],['star',T2('گواهی و امتیاز بازآموزی خودکار','Automatic certificates and CME credit')]] },
+  { id:'doctor', ic:'doctor', n:T2('پزشک','Physicians'),
+    h:T2('سخنرانی، ژورنال‌کلاب و تولید محتوای آموزشی بیمار','Talks, journal clubs and patient-education content'),
+    p:T2('محتوای بیمار را ضبط کنید، در کمیته علمی تأیید کنید و در وبینارها با مردم گفتگو کنید.','Record patient content, approve it in the clinical committee and meet the public in webinars.'),
+    tiles:[['video','#directory',T2('ضبط ویدیوی کوتاه','Record a short video'),T2('۲ تا ۴ دقیقه برای بیماران','2–4 minutes for patients')],
+           ['shield','#directory',T2('بازبینی محتوا','Content review'),T2('تأیید دیجیتال کمیته علمی','Digital clinical sign-off')],
+           ['mic','#courses',T2('وبینار ماهانه','Monthly webinar'),T2('پرسش و پاسخ زنده','Live Q&A')],
+           ['star','#directory',T2('ژورنال‌کلاب','Journal club'),T2('ارائه‌ها و امتیاز','Talks and credit')]],
+    tools:[['lms',T2('آرشیو ارائه‌ها در سامانه یادگیری','Talks archived in the learning system')],['cal',T2('تقویم سخنرانی‌ها و یادآور','Talk calendar with reminders')],['chart',T2('آمار بازدید محتوای شما','Viewing stats for your content')]] },
+  { id:'staff', ic:'staff', n:T2('کارکنان','All staff'),
+    h:T2('آموزش‌های عمومی ایمنی و ارتباط برای همه همکاران','Safety and communication training for every colleague'),
+    p:T2('از آموزش بدو ورود تا ایمنی، آتش‌نشانی و مهارت ارتباط با بیمار.','From onboarding to safety, fire drills and patient communication.'),
+    tiles:[['users','#directory',T2('آموزش بدو ورود','Onboarding'),T2('مسیر آنلاین هفته اول','First-week online path')],
+           ['shield','#directory',T2('ایمنی و بحران','Safety & emergencies'),T2('آتش‌نشانی، تخلیه، کد','Fire, evacuation, codes')],
+           ['heart','#directory',T2('ارتباط با بیمار','Patient communication'),T2('مهارت‌های گفتگو و همدلی','Conversation and empathy')],
+           ['lms','#dash',T2('پرونده آموزشی','Training record'),T2('گواهی‌های من','My certificates')]],
+    tools:[['sms',T2('یادآور آموزش‌های الزامی','Reminders for mandatory training')],['lms',T2('دوره‌های کوتاه موبایلی','Short mobile courses')],['star',T2('گواهی دیجیتال','Digital certificates')]] },
+  { id:'intl', ic:'globe', n:T2('بیمار بین‌الملل','International patients'),
+    h:T2('راهنمای انگلیسی و هماهنگی با واحد بیماران بین‌الملل','English guides, coordinated with the IPD'),
+    p:T2('پیش از سفر، حین بستری و پس از بازگشت به کشورتان، به زبان خودتان آموزش می‌بینید.','Before travel, during your stay and after you fly home — in your language.'),
+    tiles:[['globe','#',T2('نسخه انگلیسی','English version'),T2('تغییر زبان کل سایت','Switch the whole site')],
+           ['book','#library',T2('راهنماهای پیش از سفر','Pre-travel guides'),T2('آمادگی، مدارک، داروها','Preparation, records, medicines')],
+           ['video','#directory',T2('ویدیو با زیرنویس','Subtitled videos'),T2('آموزش پزشکان نیکان','Nikan clinicians')],
+           ['phone','#contact',T2('مشاوره پیش از پذیرش','Pre-admission call'),T2('هماهنگی با IPD','IPD coordination')]],
+    tools:[['globe',T2('همه راهنماها به انگلیسی','Every guide in English')],['video',T2('ویدیو با زیرنویس انگلیسی','Videos with English subtitles')],['phone',T2('تماس پیگیری پس از بازگشت','A follow-up call after you return home')]] }
+];
+const JOURNEYS = {
+  patient:[['sms',T2('پیش از پذیرش','Before admission'),T2('پیامک لینک آمادگی و ویدیوی ۳ دقیقه‌ای','SMS link to prep guide and a 3-min video'),T2('پیامک · ویدیو','SMS · video')],
+           ['qr',T2('پذیرش','Admission'),T2('اسکن QR و باز شدن راهنمای بخش','Scan a QR to open the ward guide'),T2('QR','QR')],
+           ['bed',T2('حین بستری','During the stay'),T2('آموزش پرستار روی تبلت و ثبت در پرونده الکترونیک','Nurse teaching on a tablet, logged in the EHR'),T2('تبلت · HIS','Tablet · HIS')],
+           ['check',T2('ترخیص','Discharge'),T2('آزمون سه‌سؤالی Teach-back و بسته دیجیتال ترخیص','3-question teach-back and a digital discharge pack'),T2('Teach-back','Teach-back')],
+           ['phone',T2('پس از ترخیص','After discharge'),T2('یادآور دارو، تماس ۷۲ ساعته و نظرسنجی','Medicine reminders, a 72-hour call and a survey'),T2('پیامک · تماس','SMS · call')]],
+  staff:[['users',T2('بدو ورود','Onboarding'),T2('مسیر آنلاین هفته اول با آزمون','Online first-week path with a quiz'),T2('سامانه یادگیری','LMS')],
+         ['cal',T2('ضمن خدمت','In-service'),T2('تقویم فصلی و حضور با QR','Quarterly calendar and QR attendance'),T2('QR','QR')],
+         ['shield',T2('صلاحیت بالینی','Competency'),T2('چک‌لیست مهارت و مانور شبیه‌سازی','Skills checklists and simulation drills'),T2('چک‌لیست دیجیتال','Digital checklist')],
+         ['chart',T2('ارزیابی','Assessment'),T2('آزمون آنلاین و داشبورد عملکرد','Online quiz and a performance dashboard'),T2('داشبورد','Dashboard')],
+         ['star',T2('امتیاز و تمدید','Credit & renewal'),T2('گواهی دیجیتال و امتیاز بازآموزی','Digital certificate and CME credit'),T2('گواهی','Certificate')]]
+};
+const AUD = { patient:T2('بیمار','Patients'), staff:T2('کادر درمان','Clinical staff'), doctor:T2('پزشک','Physicians'), public:T2('عموم','Public'), intl:T2('بین‌الملل','International'), all:T2('کارکنان','All staff') };
+const STATUS = { live:T2('موجود','Live'), pilot:T2('آزمایشی','Pilot'), prop:T2('پیشنهادی','Proposed') };
+const TYPEIC = { program:'cal', resource:'book', service:'lms', space:'room' };
+const TYPEN = { program:T2('برنامه','Programme'), resource:T2('منبع','Resource'), service:T2('خدمت دیجیتال','Digital service'), space:T2('فضا','Space') };
+const DIR = [
+  ['resource','live',['patient'],T2('آموزش بیماران (صفحه فعلی سایت)','Patient education page (current site)'),T2('آموزش قبل، حین و بعد از بستری و فیلم‌های آموزشی پزشکان.','Before/during/after stay education and doctor videos.'),T2('آنلاین','Online'),'#library'],
+  ['program','live',['patient','public'],T2('کلاس آمادگی زایمان','Childbirth preparation class'),T2('روزهای زوج، ثبت‌نام از هفته ۲۰ بارداری.','Even days, from week 20 of pregnancy.'),T2('حضوری','In person'),'#course/birth'],
+  ['service','live',['patient'],T2('مشاوره شیردهی','Breastfeeding counselling'),T2('مشاوره شبانه‌روزی مادران در بخش مادر و کودک.','24-hour support in the mother & child unit.'),T2('حضوری','In person'),'#directory'],
+  ['resource','live',['staff'],T2('پادکست‌های آموزش پرسنل','Staff training podcasts'),T2('فایل‌های صوتی کنترل عفونت و موضوعات بالینی.','Audio on infection control and clinical topics.'),T2('آنلاین','Online'),'#directory'],
+  ['resource','live',['staff'],T2('کتاب و جزوات کادر درمان','Staff books & booklets'),T2('منابع جداگانه برای پرستار، ماما، کمک‌پرستار و داروساز.','Separate resources for nurses, midwives, aides and pharmacists.'),T2('آنلاین','Online'),'#directory'],
+  ['resource','live',['patient','staff'],T2('ویدیوهای آموزشی (آپارات)','Teaching videos (Aparat)'),T2('پلی‌لیست‌های آموزش بیمار و کمک‌پرستار.','Patient and nursing-aide playlists.'),T2('آنلاین','Online'),'#directory'],
+  ['program','pilot',['public'],T2('دوره کمک‌پرستاری','Nursing aide course'),T2('نظری و کارورزی در بخش؛ نیازمند مجوز مرکز آموزش مهارتی.','Theory plus ward practice; needs a skills-centre licence.'),T2('حضوری','In person'),'#course/aide'],
+  ['program','prop',['public'],T2('سالمندیاری','Elderly care aide'),T2('مراقبت ایمن از سالمند در خانه و مرکز نگهداری.','Safe care for older adults at home and in facilities.'),T2('حضوری','In person'),'#course/elder'],
+  ['program','prop',['staff'],T2('احیای پایه و پیشرفته','Basic & advanced life support'),T2('دوره الزامی با مانور در اتاق مهارت.','Mandatory course with drills in the skills lab.'),T2('حضوری','In person'),'#course/acls'],
+  ['program','prop',['staff','all'],T2('کنترل عفونت و بهداشت دست','Infection control & hand hygiene'),T2('ماژول آنلاین فصلی با آزمون.','Quarterly online module with a quiz.'),T2('آنلاین','Online'),'#course/infection'],
+  ['program','prop',['all'],T2('آموزش بدو ورود کارکنان','Staff onboarding'),T2('مسیر هفته اول: ایمنی، ارزش‌ها، سامانه‌ها.','First-week path: safety, values, systems.'),T2('سامانه یادگیری','LMS'),'#dash'],
+  ['program','prop',['all'],T2('ایمنی، آتش‌نشانی و مدیریت بحران','Safety, fire & emergency'),T2('مانور سالانه و کدهای اضطراری.','Annual drills and emergency codes.'),T2('حضوری','In person'),'#directory'],
+  ['program','prop',['staff','doctor'],T2('مهارت ارتباط با بیمار','Patient communication skills'),T2('گفتگو، همدلی و بیان خبر بد.','Conversation, empathy and breaking bad news.'),T2('آنلاین','Online'),'#directory'],
+  ['space','prop',['staff'],T2('اتاق مهارت‌آموزی و شبیه‌سازی','Skills & simulation lab'),T2('رزرو آنلاین برای مانور احیا و مهارت‌های بالینی.','Online booking for code drills and clinical skills.'),T2('حضوری','In person'),'#directory'],
+  ['service','prop',['staff','doctor'],T2('سامانه یادگیری الکترونیک (LMS)','E-learning system (LMS)'),T2('دوره، آزمون، گواهی و پرونده آموزشی هر همکار.','Courses, quizzes, certificates and personal records.'),T2('آنلاین','Online'),'#dash'],
+  ['service','prop',['staff'],T2('حضور با QR','QR attendance'),T2('ثبت خودکار حضور و ساعت آموزش در پرونده.','Automatic attendance and hours in the record.'),T2('QR','QR'),'#dash'],
+  ['service','prop',['patient','staff'],T2('آزمون Teach-back بیمار','Patient teach-back check'),T2('سه سؤال پیش از ترخیص؛ نتیجه در پرونده ثبت می‌شود.','Three questions before discharge, logged in the record.'),T2('QR','QR'),'#guide/angioplasty-stents'],
+  ['service','prop',['patient'],T2('یادآور پیامکی دارو و مراجعه','SMS medicine & visit reminders'),T2('پیام خودکار پس از ترخیص.','Automatic messages after discharge.'),T2('پیامک','SMS'),'#digital'],
+  ['service','prop',['patient'],T2('تماس پیگیری ۷۲ ساعته','72-hour follow-up call'),T2('پرسیدن حال بیمار و پاسخ به سؤالات.','Checking in and answering questions.'),T2('تلفن','Phone'),'#digital'],
+  ['program','prop',['public','doctor'],T2('وبینار ماهانه پزشکان','Monthly doctor webinar'),T2('گفتگوی زنده و آرشیو ویدیو.','Live talk with a video archive.'),T2('آنلاین','Online'),'#course/webinar'],
+  ['program','prop',['doctor'],T2('ژورنال‌کلاب و ارائه‌های علمی','Journal club & grand rounds'),T2('ارائه منظم با امتیاز بازآموزی.','Regular talks with CME credit.'),T2('حضوری','In person'),'#directory'],
+  ['service','prop',['doctor'],T2('کمیته علمی بازبینی محتوا','Clinical content committee'),T2('تأیید دیجیتال هر راهنما پیش از انتشار.','Digital sign-off on every guide before publishing.'),T2('آنلاین','Online'),'#directory'],
+  ['resource','prop',['intl'],T2('راهنماهای انگلیسی بیماران بین‌الملل','English guides for international patients'),T2('هماهنگ با واحد IPD.','Coordinated with the IPD.'),T2('آنلاین','Online'),'#library'],
+  ['service','prop',['patient','staff'],T2('نظرسنجی رضایت آموزشی','Education satisfaction survey'),T2('سنجش کیفیت هر آموزش و هر دوره.','Measuring every lesson and course.'),T2('آنلاین','Online'),'#directory']
+];
+const QUIZ = [
+  [T2('داروهای خود را بعد از ترخیص چطور مصرف می‌کنید؟','How will you take your medicines after discharge?'), [T2('دقیقاً طبق نسخه','Exactly as prescribed'),T2('فقط وقتی علامت دارم','Only when I have symptoms'),T2('خودم دوز را تغییر می‌دهم','I adjust the dose myself')], 0],
+  [T2('اگر تب یا درد شدید داشتید چه می‌کنید؟','What will you do if you get a fever or severe pain?'), [T2('صبر می‌کنم خودش خوب شود','Wait for it to pass'),T2('با بیمارستان تماس می‌گیرم','Call the hospital'),T2('فقط مسکن می‌خورم','Just take a painkiller')], 1],
+  [T2('تاریخ مراجعه بعدی شما کجا ثبت شده؟','Where is your next appointment recorded?'), [T2('برگه ترخیص و پیامک یادآور','Discharge sheet and SMS reminder'),T2('نمی‌دانم','I don\'t know'),T2('نیازی به مراجعه نیست','I don\'t need one')], 0]
+];
+const UI2 = {
+  fa:{all:'همه',items:'مورد',tools:'ابزارهای دیجیتال این مسیر',quizT:'آیا متوجه شدید؟ (Teach-back)',q:'سؤال',right:'درست است!',wrong:'دوباره امتحان کنید — نکته: بخش «نکات کلیدی» را ببینید.',done:'عالی! آموزش شما تأیید شد',doneSub:'در نسخه نهایی، این نتیجه در پرونده الکترونیک شما ثبت می‌شود.',again:'دوباره',scan:'در حال اسکن…',scanOk:'حضور شما ثبت شد · ۲ ساعت آموزش اضافه شد (نمونه)'},
+  en:{all:'All',items:'items',tools:'Digital tools on this path',quizT:'Did you get it? (Teach-back)',q:'Question',right:'Correct!',wrong:'Try again — hint: see "Key points".',done:'Great — your understanding is confirmed',doneSub:'In the live version this result is logged to your health record.',again:'Retry',scan:'Scanning…',scanOk:'Attendance recorded · 2 training hours added (demo)'}
+};
+
+/* ================= persona hub ================= */
+let PID = 'patient';
+function renderPersonas(){
+  const tabs = $('#ptabs');
+  tabs.querySelectorAll('.ptab').forEach(t => t.remove());
+  PERSONAS.forEach(p => { const b = document.createElement('button'); b.className = 'ptab' + (p.id === PID ? ' on' : ''); b.dataset.p = p.id; b.setAttribute('role','tab'); b.innerHTML = svg(p.ic) + '<span>' + p.n[L] + '</span>'; tabs.appendChild(b); });
+  const p = PERSONAS.find(x => x.id === PID);
+  $('#pbody').innerHTML = `<div class="plead"><h3>${p.h[L]}</h3><p>${p.p[L]}</p>
+    <div class="ptiles">${p.tiles.map((t,i) => `<a class="ptile" href="${t[1]}" ${t[1]==='#'?'data-setlang="en"':''} style="animation-delay:${i*70}ms"><span class="ti">${svg(t[0])}</span><b>${t[2][L]}</b><small>${t[3][L]}</small><span class="arr"><svg viewBox="0 0 24 24" width="16" height="16" style="fill:none;stroke:currentColor;stroke-width:2">${IC.arrow}</svg></span></a>`).join('')}</div></div>
+    <div class="ptools"><h4>${UI2[L].tools}</h4><ul>${p.tools.map(t => `<li>${svg(t[0])}<span>${t[1][L]}</span></li>`).join('')}</ul></div>`;
+  $$('#pbody [data-setlang]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); setLang('en', true); }));
+  requestAnimationFrame(placePind);
+}
+function placePind(){ const on = $('#ptabs .ptab.on'), ind = $('.pind'); if (!on || !ind) return; ind.style.width = on.offsetWidth + 'px'; ind.style.left = on.offsetLeft + 'px'; }
+$('#ptabs').addEventListener('click', e => { const b = e.target.closest('.ptab'); if (!b || b.dataset.p === PID) return; PID = b.dataset.p; renderPersonas(); b.scrollIntoView({block:'nearest', inline:'center', behavior:'smooth'}); });
+addEventListener('resize', placePind);
+
+/* ================= journeys ================= */
+let JID = 'patient';
+function renderJourney(){
+  const j = $('#journey');
+  j.classList.remove('go');
+  j.innerHTML = '<span class="jline"></span>' + JOURNEYS[JID].map((s,i) => `<div class="jstep" style="transition-delay:${.15 + i*.18}s"><span class="jn">${svg(s[0])}</span><b>${s[1][L]}</b><p>${s[2][L]}</p><span class="tool">${s[3][L]}</span></div>`).join('');
+  if (j.dataset.seen) requestAnimationFrame(() => requestAnimationFrame(() => j.classList.add('go')));
+}
+$('#jseg').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; JID = b.dataset.j; $$('#jseg button').forEach(x => x.classList.toggle('on', x === b)); renderJourney(); });
+const jio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.dataset.seen = 1; e.target.classList.add('go'); } }), { threshold:.3 });
+jio.observe($('#journey'));
+
+/* ================= dashboard rings + QR ================= */
+const rio = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return; rio.unobserve(e.target);
+  e.target.querySelectorAll('.ringc').forEach((r,i) => setTimeout(() => {
+    r.querySelector('.rf').style.strokeDashoffset = 314 * (1 - r.dataset.v / 100);
+    const el = r.querySelector('.rv'), end = +el.dataset.n, t0 = performance.now();
+    const step = t => { const k = Math.min(1, (t - t0) / 1600); el.textContent = num(Math.round(end * (1 - Math.pow(1 - k, 3)))) + (r.dataset.v === '72' ? (L === 'fa' ? '٪' : '%') : ''); if (k < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  }, i * 200));
+}), { threshold:.4 });
+rio.observe($('#dash'));
+$('#qrBtn').addEventListener('click', () => {
+  const sc = $('#scan'); sc.classList.remove('done'); $('#scanTxt').textContent = UI2[L].scan; sc.classList.add('on');
+  setTimeout(() => { sc.classList.add('done'); $('#scanTxt').textContent = UI2[L].scanOk; }, 1600);
+  setTimeout(() => sc.classList.remove('on'), 3400);
+});
+$('#scan').addEventListener('click', () => $('#scan').classList.remove('on'));
+
+/* ================= directory ================= */
+const dst = { q:'', aud:'any', st:'any' };
+function renderDir(){
+  $('#dirStatus').innerHTML = [['any',T2('همه وضعیت‌ها','Any status')],...Object.entries(STATUS)].map(([k,v]) => `<button data-st="${k}" class="${dst.st===k?'on':''}">${v[L]}</button>`).join('');
+  $('#dirAud').innerHTML = [['any',T2('همه مخاطبان','Everyone')],...Object.entries(AUD)].map(([k,v]) => `<button class="cat ${dst.aud===k?'on':''}" data-a="${k}" style="--c:#3a4fb0"><i></i>${v[L]}</button>`).join('');
+  const q = dst.q.trim().toLowerCase();
+  const list = DIR.filter(d => (dst.st==='any'||d[1]===dst.st) && (dst.aud==='any'||d[2].includes(dst.aud)) && (!q || (d[3].fa+d[3].en+d[4].fa+d[4].en).toLowerCase().includes(q)));
+  $('#dirCount').textContent = `${num(list.length)} ${UI2[L].items}`;
+  $('#dirList').innerHTML = list.length ? list.map((d,i) => `<a class="dir-row" href="${d[6]}" style="animation-delay:${Math.min(i,10)*35}ms"><span class="di">${svg(TYPEIC[d[0]])}</span><span><b>${d[3][L]}</b><p>${d[4][L]}</p><span class="tg"><span>${TYPEN[d[0]][L]}</span>${d[2].map(a => `<span>${AUD[a][L]}</span>`).join('')}<span>${d[5][L]}</span></span></span><span class="st ${d[1]}">${STATUS[d[1]][L]}</span></a>`).join('') : `<div class="empty">${UI[L].empty}</div>`;
+}
+$('#dirStatus').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; dst.st = b.dataset.st; renderDir(); });
+$('#dirAud').addEventListener('click', e => { const b = e.target.closest('.cat'); if (!b) return; dst.aud = b.dataset.a; renderDir(); });
+$('#dirQ').addEventListener('input', e => { dst.q = e.target.value; renderDir(); });
+
+/* ================= roadmap reveal ================= */
+const roio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('go'); roio.unobserve(e.target); } }), { threshold:.3 });
+roio.observe($('#road'));
+
+/* ================= teach-back quiz in guide drawer ================= */
+let qi = 0;
+function quizHTML(){
+  if (qi >= QUIZ.length) return `<div class="qdone"><div class="big">🎉</div><b>${UI2[L].done}</b><p class="qfb">${UI2[L].doneSub}</p><button class="qopt" data-qa="reset" style="text-align:center;margin-top:8px">${UI2[L].again}</button></div>`;
+  const q = QUIZ[qi];
+  return `<div class="qprog">${QUIZ.map((_,i) => `<i class="${i < qi ? 'on' : ''}"></i>`).join('')}</div><small>${UI2[L].q} ${num(qi+1)} / ${num(QUIZ.length)}</small><div class="qq">${q[0][L]}</div>${q[1].map((o,i) => `<button class="qopt" data-qa="${i}">${o[L]}</button>`).join('')}<div class="qfb" id="qfb"></div>`;
+}
+function mountQuiz(){
+  const body = drIn.querySelector('.dr-body'); if (!body || !current || current.type !== 'guide') return;
+  let box = body.querySelector('.quiz');
+  if (!box) { const sec = document.createElement('section'); sec.innerHTML = `<div class="quiz"><h4>${UI2[L].quizT}</h4><div class="qwrap"></div></div>`; const warn = body.querySelector('.warn'); (warn ? warn.closest('section') : body.lastElementChild).before(sec); box = sec.querySelector('.quiz'); }
+  box.querySelector('h4').textContent = UI2[L].quizT;
+  box.querySelector('.qwrap').innerHTML = quizHTML();
+}
+function confetti(box){
+  const cols = ['#3cd8b4','#7b8cf0','#aab8ff','#fff','#e0a95e'];
+  for (let i = 0; i < 26; i++) { const c = document.createElement('i'); c.className = 'confetti'; c.style.cssText = `left:${Math.random()*100}%;background:${cols[i%5]};animation-delay:${Math.random()*.4}s;animation-duration:${1.2+Math.random()}s`; box.appendChild(c); setTimeout(() => c.remove(), 2600); }
+}
+drawer.addEventListener('click', e => {
+  const o = e.target.closest('[data-qa]'); if (!o) return;
+  if (o.dataset.qa === 'reset') { qi = 0; mountQuiz(); return; }
+  const ok = +o.dataset.qa === QUIZ[qi][2];
+  o.classList.add(ok ? 'right' : 'wrong');
+  const fb = drIn.querySelector('#qfb'); if (fb) fb.textContent = ok ? UI2[L].right : UI2[L].wrong;
+  if (ok) setTimeout(() => { qi++; mountQuiz(); if (qi >= QUIZ.length) confetti(drIn.querySelector('.quiz')); }, 650);
+  else setTimeout(() => o.classList.remove('wrong'), 600);
+});
+const _ofh = openFromHash;
+openFromHash = function(){ qi = 0; _ofh(); mountQuiz(); };
+removeEventListener('hashchange', _ofh); addEventListener('hashchange', openFromHash);
+
+/* ================= liquid tab bar pill ================= */
+function placeTpill(){
+  const bar = $('.tabbar'), pill = $('.tpill'); if (!bar || !pill || getComputedStyle(bar).display === 'none') return;
+  const on = bar.querySelector('a.on'); if (!on) { pill.style.opacity = 0; return; }
+  pill.style.opacity = 1; pill.style.left = (on.offsetLeft - 4) + 'px'; pill.style.width = (on.offsetWidth + 8) + 'px';
+}
+new MutationObserver(placeTpill).observe($('.tabbar'), { subtree:true, attributes:true, attributeFilter:['class'] });
+addEventListener('resize', placeTpill); setTimeout(placeTpill, 800);
+
+
+/* pause SVG silk animations when off screen (saves battery and paint time) */
+(() => {
+  const svgs = [...document.querySelectorAll('.silk svg, .ribbon svg')];
+  const pio2 = new IntersectionObserver(es => es.forEach(e => { try { e.isIntersecting ? e.target.unpauseAnimations() : e.target.pauseAnimations(); } catch(_) {} }), { rootMargin:'100px' });
+  svgs.forEach(sv => pio2.observe(sv));
+})();
 /* ================= soft interactions ================= */
 // spotlight on glass surfaces
 const spotSel = '.lib-card,.course,.stat,.panel,.faq details';
