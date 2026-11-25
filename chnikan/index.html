@@ -29,7 +29,7 @@ body{
 .app{height:100%;display:flex;flex-direction:column;align-items:center}
 
 /* ---------- top bar ---------- */
-.top{width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px 0}
+.top{width:100%;display:flex;align-items:center;justify-content:space-between;padding:calc(14px + env(safe-area-inset-top,0px)) max(20px,env(safe-area-inset-right,0px)) 0 max(20px,env(safe-area-inset-left,0px))}
 .top .grp{display:flex;gap:8px}
 .ibtn{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.04);
   color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:.25s}
@@ -61,7 +61,8 @@ body{
   background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.38) 48%,transparent 60%)}
 .page.cur.sweep .gloss{animation:sweep 1.25s .35s ease-out}
 @keyframes sweep{0%{opacity:1;transform:translateX(-60%)}100%{opacity:0;transform:translateX(60%)}}
-.pg{position:absolute;inset:0;container-type:size}
+.page{container-type:size}
+.pg{position:absolute;inset:0}
 
 /* ---------- cover ---------- */
 .cover .cbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.04)}
@@ -160,7 +161,8 @@ body{
 .back .en2{font-family:var(--en);letter-spacing:.3em;color:var(--gold);font-size:1.8cqw;margin-top:2.6cqh}
 
 /* ---------- caption + controls ---------- */
-.below{position:relative;z-index:5;width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;padding:0 16px 18px}
+.below{position:relative;z-index:5;width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;padding:0 max(16px,env(safe-area-inset-right,0px)) calc(18px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+button,input,.stage{touch-action:manipulation}
 .caption{text-align:center;min-height:46px}
 .caption b{display:block;font-size:clamp(15px,1.7vw,19px);font-weight:600}
 .caption i{font-family:var(--en);font-size:clamp(13px,1.4vw,16px);color:var(--muted)}
@@ -178,7 +180,7 @@ body{
 .scrub input{flex:1;direction:rtl;accent-color:var(--teal);height:4px;cursor:pointer}
 .prog{width:min(560px,92vw);height:2px;border-radius:2px;background:rgba(255,255,255,.1);overflow:hidden}
 .prog div{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--teal));margin-inline-start:0}
-.hint{position:absolute;top:6px;left:50%;transform:translateX(-50%);z-index:300;font-size:12px;color:var(--muted);padding:6px 14px;border-radius:20px;
+.hint{position:static;margin-top:-2px;font-size:12px;color:var(--muted);padding:6px 14px;border-radius:20px;
   background:rgba(255,255,255,.06);border:1px solid var(--line);white-space:nowrap;transition:opacity .8s;pointer-events:none}
 
 /* ---------- grid overview ---------- */
@@ -195,6 +197,64 @@ body{
 .tile .tt{padding:7px 9px;font-size:12px;display:flex;justify-content:space-between;gap:6px}
 .tile .tt span{color:var(--muted);font-family:var(--en)}
 
+/* ---------- tall (phone) pages ---------- */
+@container (aspect-ratio < 1) {
+  .paper::before{inset:3.2cqw}
+  .folio{font-size:3cqw;bottom:2.2cqh;left:6cqw}
+  .brandmark{display:none}
+  .cover .ctext{padding:0 6cqw 6cqh}
+  .cover .kick{font-size:2.7cqw;letter-spacing:.16em;line-height:1.7}
+  .cover h2{font-size:12.5cqw}
+  .cover .csub{font-size:4.8cqw}
+  .cover .rule{width:26cqw;margin:2cqh auto}
+  .cover .faces{gap:2cqw;flex-wrap:wrap}
+  .face{width:11cqw}
+  .cover .loc{font-size:3.4cqw}
+  .toc{padding:4.5cqh 7cqw 5cqh}
+  .toc h2{font-size:9cqw}
+  .toc h2 small{font-size:4.6cqw}
+  .toc ol{margin-top:2cqh;gap:.2cqh}
+  .toc li{grid-template-columns:8cqw 1fr 9cqw;padding:.45cqh 2cqw;border-radius:2.4cqw;line-height:1.4}
+  .toc .mini{display:none}
+  .toc .no{font-size:5.6cqw}
+  .toc .t b{font-size:4.2cqw}
+  .toc .t i{font-size:2.8cqw}
+  .toc .pn{font-size:3.8cqw}
+  .gchip{top:3.4cqw;left:3.4cqw;padding:1.6cqw 2.6cqw 1.6cqw 1.6cqw;gap:2cqw}
+  .gchip span{width:6.4cqw;font-size:3.4cqw}
+  .gchip b{font-size:3.4cqw}
+  .char{grid-template-columns:57% 43%}
+  .char .photos{position:static}
+  .char .ctext{padding:33cqh 6cqw 6cqh 2cqw}
+  .eyebrow{font-size:2.9cqw;gap:1.6cqw;flex-wrap:wrap}
+  .eyebrow span{padding:.5cqw 2cqw}
+  .ctext h2{font-size:7.4cqw;margin-top:1.4cqh}
+  .ctext .en{font-size:4.4cqw}
+  .ctext .bar{width:13cqw;margin:1.4cqh 0 1.3cqh}
+  .ctext .desc{font-size:3.4cqw;line-height:1.85}
+  .specs{margin-top:1.4cqh;gap:.8cqh}
+  .specs li{grid-template-columns:1fr;gap:.2cqh;font-size:3.3cqw;padding-bottom:.8cqh}
+  .specs b{font-size:2.8cqw}
+  .sw{gap:1.8cqw;padding-top:1.2cqh}
+  .sw i{width:4.8cqw}
+  .sw em{display:none}
+  .pola{padding:1.4cqw 1.4cqw 5cqw;border-radius:.6cqw}
+  .pola.body{top:5cqh;bottom:5.5cqh;right:auto;left:4.5cqw;max-width:37cqw;padding-top:3cqw}
+  .pola.facep,.char.wide .pola.facep{display:block;width:25cqw;left:auto;right:7cqw;top:4.6cqh;bottom:auto;padding-top:3cqw;padding-bottom:5.6cqw}
+  .pola .cap{font-size:2.7cqw;bottom:1.3cqw}
+  .tape{width:13cqw;height:3.8cqw;top:-1.9cqw}
+  .tape.a,.tape.b{margin-left:-6.5cqw}
+  .back .bimg{height:40%}
+  .back .btext{padding:0 7cqw 6cqh}
+  .back h2{font-size:8.6cqw}
+  .back p{font-size:3.7cqw}
+  .back .all{grid-template-columns:repeat(5,1fr);gap:2.6cqw;width:100%}
+  .back .en2{font-size:3.2cqw}
+}
+body.compact .head .meta,body.compact .caption,body.compact .scrub,body.compact .hint{display:none}
+body.compact .top{padding-top:calc(6px + env(safe-area-inset-top,0px))}
+body.compact .head h1{font-size:15px}
+body.compact .below{gap:6px;padding-bottom:calc(8px + env(safe-area-inset-bottom,0px))}
 @media (max-width:640px){
   .top{padding:10px 12px 0}
   .ibtn{width:34px;height:34px}
@@ -342,14 +402,20 @@ pages.forEach(el => el.querySelectorAll('.pola.body img').forEach(img => {
 }));
 
 /* ---- sizing ---- */
-let PW = 800;
+let PW = 800, RATIO = 0.75;
 function size() {
   const vw = innerWidth, vh = innerHeight;
   const small = vw < 640;
-  const reserved = small ? 250 : 270;
-  PW = Math.max(220, Math.min(vw * (small ? 0.84 : 0.66), 880, (vh - reserved) * 4 / 3));
+  const portrait = vw < 760 && vh > vw * 1.15;
+  const compact = vh < 540;
+  document.body.classList.toggle('compact', compact);
+  RATIO = portrait ? 1.42 : 0.75;
+  const avail = Math.max(120, document.getElementById('stage').clientHeight - (compact ? 8 : 20));
+  PW = portrait ? Math.min(vw * 0.86, avail / RATIO)
+                : Math.min(vw * (small ? 0.84 : 0.66), 880, avail / RATIO);
+  PW = Math.max(180, PW);
   book.style.setProperty('--pw', PW + 'px');
-  book.style.setProperty('--ph', PW * 0.75 + 'px');
+  book.style.setProperty('--ph', PW * RATIO + 'px');
   layout(false);
 }
 
@@ -480,11 +546,14 @@ function full() {
 $('btnFull').onclick = full;
 
 addEventListener('resize', size);
+if (window.ResizeObserver) new ResizeObserver(() => size()).observe(document.getElementById('stage'));
+document.fonts && document.fonts.ready.then(size);
 size();
 btnPlay.innerHTML = ICON_PAUSE;
 cur = -1; go(0);
 if (matchMedia('(pointer:coarse)').matches) $('hint').textContent = 'برای ورق زدن، صفحه را به چپ یا راست بکشید';
-setTimeout(() => $('hint').style.opacity = 0, 6500);
+document.querySelector('.below').appendChild($('hint'));
+setTimeout(() => { $('hint').style.opacity = 0; setTimeout(() => { $('hint').hidden = true; size(); }, 900); }, 6500);
 </script>
 </body>
 </html>
